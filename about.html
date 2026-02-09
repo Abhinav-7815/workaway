@@ -1,0 +1,1090 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>About Us - WorkAway Education | Global Excellence</title>
+    <link href="https://fonts.googleapis.com/" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Public+Sans:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/?plugins=forms,typography"></script>
+    <script src="js/tailwind.config.js"></script>
+    <link href="css/style.css" rel="stylesheet" />
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <style>
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.18); }
+        .dark .glass { background: rgba(11, 15, 26, 0.7); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .glass-card { background: rgba(255, 255, 255, 0.95); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.5); }
+        .dark .glass-card { background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .text-gradient { background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-image: linear-gradient(to right, #4DD0E1, #26c6da); }
+        .blob { position: absolute; width: 500px; height: 500px; background: linear-gradient(180deg, rgba(77, 208, 225, 0.3) 0%, rgba(84, 110, 122, 0.05) 100%); border-radius: 50%; filter: blur(80px); z-index: -1; opacity: 0.6; animation: move 25s infinite alternate; }
+        @keyframes move { from { transform: translate(0, 0) scale(1); } to { transform: translate(20px, -20px) scale(1.1); } }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-15px); } }
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        
+        /* Timeline Styles */
+        .timeline-dot { transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1); cursor: pointer; position: relative; }
+        .timeline-dot::before { content: ''; position: absolute; inset: -8px; background: currentColor; border-radius: inherit; opacity: 0; transition: opacity 0.3s; }
+        .timeline-dot:hover::before { opacity: 0.15; }
+        .timeline-dot.active { transform: scale(1.3); box-shadow: 0 0 20px currentColor; }
+        .timeline-dot.active::before { opacity: 0.25; scale: 1.5; }
+        .timeline-progress { transition: width 0.8s cubic-bezier(0.65, 0, 0.35, 1); }
+        .step-content { display: none; }
+        .step-content.active { display: block; animation: slideUp 0.5s ease-out forwards; }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Swiper Custom Pagination Color */
+        .swiper-pagination-bullet-active { background: #1CD1D1 !important; }
+        .swiper-pagination-bullet { background: #94a3b8; opacity: 0.5; }
+        .swiper-pagination-bullet-active { opacity: 1; }
+    </style>
+    <script>
+        // Theme Management
+        function initTheme() {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        }
+        
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        // Initialize immediately
+        initTheme();
+    </script>
+</head>
+
+<body class="bg-white dark:bg-[#0B0F1A] text-text-light dark:text-text-dark font-body transition-colors duration-300">
+    <div class="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-blue-400 to-secondary z-[60]"></div>
+
+    <!-- NAVIGATION (Standardized) -->
+    <nav class="fixed w-full z-50 transition-all duration-300 glass border-b border-gray-100/50 dark:border-white/5 shadow-sm"
+        id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.location.href='home.html'">
+                    <div class="relative w-11 h-11 rounded-full overflow-hidden mr-3 shadow-sm flex items-center justify-center"
+                        style="background: linear-gradient(135deg, #1CD1D1 50%, #475569 50%);">
+                        <span class="material-icons-outlined text-white text-2xl"
+                            style="transform: rotate(45deg);">flight</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-display font-black text-2xl tracking-tighter leading-none">
+                            <span class="text-[#1CD1D1]">work</span><span
+                                class="text-[#475569] dark:text-white">away</span>
+                        </span>
+                        <span
+                            class="text-[0.55rem] uppercase tracking-[0.25em] text-[#475569] dark:text-gray-400 font-bold mt-1">Make
+                            Life Better</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="home.html"
+                        class="px-4 py-2 text-sm font-bold text-gray-500 hover:text-primary transition-colors">Home</a>
+                    <a href="services.html"
+                        class="px-4 py-2 text-sm font-bold text-gray-500 hover:text-primary transition-colors">Services</a>
+                    <a href="blog.html"
+                        class="px-4 py-2 text-sm font-bold text-gray-500 hover:text-primary transition-colors">Blog</a>
+                    <a href="career.html"
+                        class="px-4 py-2 text-sm font-bold text-gray-500 hover:text-primary transition-colors">Career</a>
+                    <a href="about.html"
+                        class="px-5 py-2 text-sm font-bold text-primary rounded-full bg-primary/10 transition-colors focus:outline-none">About</a>
+                    <a href="contact.html"
+                        class="px-4 py-2 text-sm font-bold text-gray-500 hover:text-primary transition-colors">Contact</a>
+                </div>
+                <div class="hidden md:flex items-center gap-4">
+                    <button onclick="toggleTheme()"
+                        class="p-2 rounded-full text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all focus:outline-none">
+                        <span class="material-icons-outlined dark:hidden">dark_mode</span>
+                        <span class="material-icons-outlined hidden dark:inline text-yellow-300">light_mode</span>
+                    </button>
+                    <a href="contact.html#inquiry"
+                        class="px-8 py-2.5 rounded-full bg-[#1CD1D1] text-white text-sm font-bold shadow-lg shadow-cyan-500/20 hover:shadow-[#1CD1D1]/40 hover:-translate-y-0.5 transition-all">Inquiry</a>
+                </div>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden flex items-center">
+                    <button class="p-2 rounded-md text-gray-600 dark:text-gray-200" id="mobile-menu-btn"><span
+                            class="material-icons-outlined text-2xl">menu</span></button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu Panel -->
+        <div class="md:hidden hidden bg-white dark:bg-surface-dark border-t border-gray-100 dark:border-gray-800"
+            id="mobile-menu-panel">
+            <div class="px-4 pt-4 pb-6 space-y-2">
+                <a href="home.html"
+                    class="block px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 font-medium hover:bg-gray-50 dark:hover:bg-gray-800">Home</a>
+                <a href="services.html"
+                    class="block px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 font-medium hover:bg-gray-50 dark:hover:bg-gray-800">Services</a>
+                <a href="blog.html"
+                    class="block px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 font-medium hover:bg-gray-50 dark:hover:bg-gray-800">Blog</a>
+                <a href="career.html"
+                    class="block px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 font-medium hover:bg-gray-50 dark:hover:bg-gray-800">Career</a>
+                <a href="about.html" class="block px-4 py-3 rounded-lg bg-primary/10 text-primary font-bold">About</a>
+                <a href="contact.html"
+                    class="block px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 font-medium hover:bg-gray-50 dark:hover:bg-gray-800">Contact</a>
+                <a href="contact.html#inquiry"
+                    class="block px-4 py-3 rounded-lg bg-primary text-white font-bold text-center">Inquiry</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- HERO SECTION -->
+        <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+            <div class="blob top-0 left-0 transform -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="blob bottom-0 right-0 transform translate-x-1/3 translate-y-1/3 bg-blue-400"></div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+                    <div data-aos="fade-right" data-aos-duration="1000">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-8 shadow-sm">
+                            <span class="flex h-3 w-3 relative">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3 w-3 bg-primary"></span>
+                            </span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-secondary dark:text-gray-300">Est. 2015 • Global Impact</span>
+                        </div>
+                        <h1 class="text-5xl lg:text-7xl font-display font-black text-gray-950 dark:text-white leading-[1.05] mb-8 tracking-tighter">
+                            Bridging Gap to <br/><span class="text-gradient">Global Excellence</span>
+                        </h1>
+                        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-10 max-w-lg leading-relaxed font-light">
+                            At WorkAway, we empower nursing professionals to transcend borders. We build the foundations for <span class="text-primary font-bold italic">"make life better."</span>
+                        </p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="https://wa.me/919624513738" target="_blank" class="flex items-center justify-center px-8 py-4 rounded-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                                WhatsApp
+                                <svg class="w-6 h-6 ml-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
+                                </svg>
+                            </a>
+                            <a href="contact.html#inquiry" class="flex items-center justify-center px-8 py-4 rounded-full glass-card hover:bg-white dark:hover:bg-gray-800 text-gray-800 dark:text-white font-bold text-lg border border-gray-200 dark:border-gray-700 transition-all group">
+                                Inquiry Now
+                                <span class="material-icons-outlined ml-2 text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="relative" data-aos="fade-left" data-aos-duration="1000">
+                        <div class="relative mx-auto w-full rounded-2xl shadow-2xl lg:max-w-md transform rotate-2 hover:rotate-0 transition-transform duration-500">
+                             <div class="relative block w-full bg-white dark:bg-surface-dark rounded-[2.5rem] overflow-hidden border border-gray-100 dark:border-gray-700">
+                                <div class="relative h-64 sm:h-80 lg:h-96 bg-gradient-to-br from-teal-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center">
+                                    <img alt="Medical professional" class="absolute inset-0 w-full h-full object-cover opacity-100 dark:opacity-80 transition-opacity duration-500" src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=800" />
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Floating Card -->
+                        <div class="absolute -bottom-6 -left-6 md:-left-12 glass-card p-6 rounded-3xl shadow-2xl max-w-[280px] animate-float">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center text-primary">
+                                    <span class="material-icons-outlined">public</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold text-gray-900 dark:text-white">Global Reach</h4>
+                                    <p class="text-[0.7rem] text-gray-500">12+ Partner Countries</p>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="h-2 w-full bg-gray-100 dark:bg-white/5 rounded-full overflow-hidden">
+                                    <div class="h-full bg-primary w-[92%] rounded-full"></div>
+                                </div>
+                                <div class="text-right text-xs font-bold text-primary italic">"Bridging Excellence"</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+            </div>
+        </section>
+
+        <!-- Partners (Standardized with Home) -->
+        <section class="py-10 border-y border-gray-200 dark:border-gray-800 bg-white dark:bg-surface-dark/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p class="text-sm font-semibold text-gray-400 uppercase tracking-widest mb-8">Recognized By Top Institutions</p>
+                <div class="flex flex-wrap justify-center items-center gap-10 md:gap-20">
+                    <div class="relative h-24 md:h-32">
+                        <!-- Light Mode (Color) -->
+                        <img src="images/dha_logo_color.png" alt="DHA" class="h-full object-contain dark:hidden mix-blend-multiply opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer" />
+                        <!-- Dark Mode (White) -->
+                        <img src="images/dha_logo_dark.png" alt="DHA" class="h-full object-contain hidden dark:block mix-blend-screen opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer" />
+                    </div>
+                    <div class="relative h-24 md:h-32">
+                        <!-- Light Mode (Color) -->
+                        <img src="images/haad_logo_color.png" alt="HAAD" class="h-full object-contain dark:hidden mix-blend-multiply opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer" />
+                        <!-- Dark Mode (White) -->
+                        <img src="images/haad_logo_dark.png" alt="HAAD" class="h-full object-contain hidden dark:block mix-blend-screen opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer" />
+                    </div>
+                    <div class="relative h-24 md:h-32">
+                        <!-- Light Mode (Color) -->
+                        <img src="images/moh_logo_color.png" alt="MOH" class="h-full object-contain dark:hidden mix-blend-multiply opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer" />
+                        <!-- Dark Mode (White) -->
+                        <img src="images/moh_logo_dark.png" alt="MOH" class="h-full object-contain hidden dark:block mix-blend-screen opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- MISSION & VISION -->
+        <section class="py-32 bg-gray-50 dark:bg-[#0B0F1A]/40 relative overflow-hidden">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-20 items-center">
+                    <div data-aos="fade-right">
+                        <h2 class="text-4xl md:text-6xl font-display font-black text-gray-950 dark:text-white tracking-tighter leading-[1] mb-8">
+                            Our Soul: <br/><span class="text-gradient">Mission & Vision</span>
+                        </h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-400 font-light leading-relaxed mb-12">
+                            We don't just facilitate exams; we curate transitions. Our core philosophy is built on the belief that geography should never limit a nurse's potential for excellence.
+                        </p>
+                        <div class="grid sm:grid-cols-2 gap-8">
+                            <!-- Mission Card -->
+                            <div class="space-y-4">
+                                <div class="w-14 h-14 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+                                    <span class="material-icons-outlined text-3xl">rocket_launch</span>
+                                </div>
+                                <h4 class="text-xl font-black text-gray-900 dark:text-white uppercase tracking-tighter">Our Mission</h4>
+                                <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed font-light">
+                                    To provide the most robust clinical and linguistic preparation, ensuring every WorkAway candidate is 'work-ready' from day one in their new host country.
+                                </p>
+                            </div>
+                            
+                            <!-- Vision Card -->
+                            <div class="space-y-4">
+                                <div class="w-14 h-14 rounded-2xl bg-secondary/10 flex items-center justify-center text-secondary">
+                                    <span class="material-icons-outlined text-3xl">visibility</span>
+                                </div>
+                                <h4 class="text-xl font-black text-gray-900 dark:text-white uppercase tracking-tighter">Our Vision</h4>
+                                <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed font-light">
+                                    To become the world's most trusted launchpad for healthcare professionals, recognized globally for the integrity of our candidates and the success of our relocation models.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="grid grid-cols-2 gap-6" data-aos="fade-left">
+                        <div class="space-y-6">
+                            <div class="p-10 rounded-[3rem] bg-white dark:bg-surface-dark border border-gray-100 dark:border-white/5 shadow-xl">
+                                <span class="text-5xl font-display font-black text-primary block mb-2">5k+</span>
+                                <p class="text-[0.6rem] font-black uppercase tracking-widest text-gray-400">Nurses Relocated</p>
+                            </div>
+                            <div class="p-10 rounded-[3rem] bg-gray-950 dark:bg-white text-white dark:text-gray-950 shadow-2xl hover:-translate-y-2 transition-transform">
+                                <span class="text-5xl font-display font-black block mb-2">12+</span>
+                                <p class="text-[0.6rem] font-bold uppercase tracking-widest opacity-60">Global Markets</p>
+                            </div>
+                        </div>
+                        <div class="space-y-6 pt-12">
+                            <div class="p-10 rounded-[3rem] bg-white dark:bg-surface-dark border border-gray-100 dark:border-white/5 shadow-xl">
+                                <span class="text-5xl font-display font-black text-primary block mb-2">98%</span>
+                                <p class="text-[0.6rem] font-black uppercase tracking-widest text-gray-400">Success Rate</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- OUR METHODOLOGY -->
+        <section class="py-32 bg-white dark:bg-[#0B0F1A] transition-colors">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-20 items-center">
+                    <div class="relative order-2 lg:order-1" data-aos="fade-right">
+                        <div class="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl">
+                            <img src="https://images.unsplash.com/photo-1516549655169-df83a0774514?auto=format&fit=crop&q=80&w=800" alt="Methodology" class="w-full h-full object-cover group-hover:scale-105 transition-all duration-1000">
+                            <div class="absolute inset-0 bg-gradient-to-tr from-primary/20 to-transparent"></div>
+                        </div>
+                        
+                        <!-- Floating Detail -->
+                        <div class="absolute top-1/4 -right-10 bg-white dark:bg-surface-dark p-6 rounded-3xl shadow-2xl border border-gray-100 dark:border-white/10 z-20">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-full bg-green-500/20 flex items-center justify-center text-green-500">
+                                    <span class="material-icons-outlined">done_all</span>
+                                </div>
+                                <span class="text-xs font-black uppercase tracking-tighter text-gray-900 dark:text-white leading-none">QC Verified <br/>Curriculum</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="space-y-10 order-1 lg:order-2" data-aos="fade-left">
+                        <span class="text-primary font-bold text-xs uppercase tracking-widest px-4 py-2 rounded-full bg-primary/10 border border-primary/20 inline-block">The 3-Step Success Engine</span>
+                        <h2 class="text-4xl md:text-6xl font-display font-black text-gray-950 dark:text-white tracking-tighter leading-[1]">
+                            How We Help You <br/><span class="text-gradient">Succeed Globally</span>
+                        </h2>
+                        
+                        <div class="space-y-6">
+                            <div class="flex items-start gap-6 group">
+                                <div class="w-12 h-12 rounded-2xl bg-gray-50 dark:bg-surface-dark border border-gray-100 dark:border-white/10 flex items-center justify-center text-gray-950 dark:text-white font-display font-black shrink-0 group-hover:bg-primary group-hover:text-white transition-all">01</div>
+                                <div>
+                                    <h4 class="text-lg font-black text-gray-900 dark:text-white uppercase tracking-tight">Immersive Prep</h4>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">High-intensity clinical simulations and linguistic drills that mirror real-world exams like NCLEX and OET.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-6 group">
+                                <div class="w-12 h-12 rounded-2xl bg-gray-50 dark:bg-surface-dark border border-gray-100 dark:border-white/10 flex items-center justify-center text-gray-950 dark:text-white font-display font-black shrink-0 group-hover:bg-primary group-hover:text-white transition-all">02</div>
+                                <div>
+                                    <h4 class="text-lg font-black text-gray-900 dark:text-white uppercase tracking-tight">Administrative Shield</h4>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">We handle the grueling documentation: DHA, HAAD, MOH, and Visa paperwork, allowing you to focus solely on learning.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start gap-6 group">
+                                <div class="w-12 h-12 rounded-2xl bg-gray-50 dark:bg-surface-dark border border-gray-100 dark:border-white/10 flex items-center justify-center text-gray-950 dark:text-white font-display font-black shrink-0 group-hover:bg-primary group-hover:text-white transition-all">03</div>
+                                <div>
+                                    <h4 class="text-lg font-black text-gray-900 dark:text-white uppercase tracking-tight">On-Ground Support</h4>
+                                    <p class="text-sm text-gray-500 dark:text-gray-400 mt-1">Dedicated mentorship and housing guidance in the host country, ensuring you never feel alone in your journey.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        </section>
+
+        <!-- THE ROADMAP: INTERACTIVE TIMELINE -->
+        <section class="py-32 bg-white dark:bg-background-dark relative transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="text-center mb-20" data-aos="fade-up">
+                    <span class="text-primary font-bold text-xs uppercase tracking-[0.4em] mb-4 block">The Process</span>
+                    <h2 class="text-4xl md:text-6xl font-display font-black text-gray-950 dark:text-white mb-6 tracking-tighter leading-none">
+                        Your Professional <br/><span class="text-gradient">Roadmap</span>
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg font-light max-w-2xl mx-auto">
+                        Click on each stage to unlock the details of your international career transition.
+                    </p>
+                </div>
+
+                <!-- Timeline Navigation -->
+                <div class="relative py-12 mb-20">
+                    <!-- Base Track -->
+                    <div class="absolute top-1/2 left-0 w-full h-1 bg-gray-100 dark:bg-white/5 -translate-y-1/2 rounded-full"></div>
+                    <!-- Progress Fill -->
+                    <div id="timelineProgress" class="absolute top-1/2 left-0 h-1 bg-gradient-to-r from-primary to-secondary -translate-y-1/2 rounded-full timeline-progress" style="width: 0%"></div>
+                    
+                    <!-- Journey Points -->
+                    <div class="relative flex justify-between">
+                        <!-- Point 1 -->
+                        <div class="flex flex-col items-center gap-4">
+                            <button onclick="switchStep(0)" class="timeline-dot active w-6 h-6 rounded-full bg-primary border-4 border-white dark:border-background-dark z-10" data-step="0"></button>
+                            <span class="text-[0.6rem] font-black uppercase tracking-widest text-gray-400 dark:text-gray-500">Consultation</span>
+                        </div>
+                        <!-- Point 2 -->
+                        <div class="flex flex-col items-center gap-4">
+                            <button onclick="switchStep(20)" class="timeline-dot w-6 h-6 rounded-full bg-gray-300 dark:bg-white/10 border-4 border-white dark:border-background-dark z-10 shadow-sm" data-step="1"></button>
+                            <span class="text-[0.6rem] font-black uppercase tracking-widest text-gray-400 dark:text-gray-500">Training</span>
+                        </div>
+                        <!-- Point 3 -->
+                        <div class="flex flex-col items-center gap-4">
+                            <button onclick="switchStep(40)" class="timeline-dot w-6 h-6 rounded-full bg-gray-300 dark:bg-white/10 border-4 border-white dark:border-background-dark z-10 shadow-sm" data-step="2"></button>
+                            <span class="text-[0.6rem] font-black uppercase tracking-widest text-gray-400 dark:text-gray-500">DataFlow</span>
+                        </div>
+                        <!-- Point 4 -->
+                        <div class="flex flex-col items-center gap-4">
+                            <button onclick="switchStep(60)" class="timeline-dot w-6 h-6 rounded-full bg-gray-300 dark:bg-white/10 border-4 border-white dark:border-background-dark z-10 shadow-sm" data-step="3"></button>
+                            <span class="text-[0.6rem] font-black uppercase tracking-widest text-gray-400 dark:text-gray-500">Exam Preparation</span>
+                        </div>
+                        <!-- Point 5 -->
+                        <div class="flex flex-col items-center gap-4">
+                            <button onclick="switchStep(80)" class="timeline-dot w-6 h-6 rounded-full bg-gray-300 dark:bg-white/10 border-4 border-white dark:border-background-dark z-10 shadow-sm" data-step="4"></button>
+                            <span class="text-[0.6rem] font-black uppercase tracking-widest text-gray-400 dark:text-gray-500">Visa Processing</span>
+                        </div>
+                        <!-- Point 6 -->
+                        <div class="flex flex-col items-center gap-4">
+                            <button onclick="switchStep(100)" class="timeline-dot w-6 h-6 rounded-full bg-gray-300 dark:bg-white/10 border-4 border-white dark:border-background-dark z-10 shadow-sm" data-step="5"></button>
+                            <span class="text-[0.6rem] font-black uppercase tracking-widest text-gray-400 dark:text-gray-500">Relocation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Step Content Container -->
+                <div class="relative bg-gray-50 dark:bg-surface-dark p-8 md:p-16 rounded-[3rem] border border-gray-100 dark:border-white/5 overflow-hidden shadow-xl">
+                    <!-- Background Decoration -->
+                    <div class="absolute -top-24 -right-24 w-96 h-96 bg-primary/5 rounded-full blur-[100px]"></div>
+                    
+                    <!-- Content Slides -->
+                    <div id="step-0" class="step-content active">
+                        <div class="grid lg:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <span class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-8">
+                                    <span class="material-icons-outlined text-4xl">psychology</span>
+                                </span>
+                                <h3 class="text-3xl font-display font-black text-gray-950 dark:text-white mb-6 uppercase tracking-tight">Stage 01: Expert Consultation</h3>
+                                <p class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-8">
+                                    We begin with a thorough assessment of your professional credentials and career goals. Our experts map out the best destination (UAE, UK, or beyond) based on your experience.
+                                </p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300 font-bold">
+                                        <span class="material-icons-outlined text-primary">done</span> Eligibility Verification
+                                    </li>
+                                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300 font-bold">
+                                        <span class="material-icons-outlined text-primary">done</span> Country Selection Guidance
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="rounded-3xl overflow-hidden shadow-2xl">
+                                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&q=80&w=800" alt="Consultation" class="w-full h-80 object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="step-1" class="step-content">
+                        <div class="grid lg:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <span class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-8">
+                                    <span class="material-icons-outlined text-4xl">school</span>
+                                </span>
+                                <h3 class="text-3xl font-display font-black text-gray-950 dark:text-white mb-6 uppercase tracking-tight">Stage 02: Elite Training</h3>
+                                <p class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-8">
+                                    Intensive coaching for linguistic and clinical exams. Whether it's OET, IELTS, or language proficiency, we ensure you exceed the required scores.
+                                </p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300 font-bold">
+                                        <span class="material-icons-outlined text-primary">done</span> OET/IELTS Masterclasses
+                                    </li>
+                                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300 font-bold">
+                                        <span class="material-icons-outlined text-primary">done</span> Real-time Mock Drills
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="rounded-3xl overflow-hidden shadow-2xl">
+                                <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=800" alt="Training" class="w-full h-80 object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="step-2" class="step-content">
+                        <div class="grid lg:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <span class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-8">
+                                    <span class="material-icons-outlined text-4xl">description</span>
+                                </span>
+                                <h3 class="text-3xl font-display font-black text-gray-950 dark:text-white mb-6 uppercase tracking-tight">Stage 03: DataFlow Management</h3>
+                                <p class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-8">
+                                    The most complex part of the process—document verification. We act as your administrative shield, managing the primary source verification (PSV) through Dataflow.
+                                </p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300 font-bold">
+                                        <span class="material-icons-outlined text-primary">done</span> Document Authentication
+                                    </li>
+                                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300 font-bold">
+                                        <span class="material-icons-outlined text-primary">done</span> Professional Licensing Support
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="rounded-3xl overflow-hidden shadow-2xl">
+                                <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=800" alt="DataFlow" class="w-full h-80 object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="step-3" class="step-content">
+                        <div class="grid lg:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <span class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-8">
+                                    <span class="material-icons-outlined text-4xl">history_edu</span>
+                                </span>
+                                <h3 class="text-3xl font-display font-black text-gray-950 dark:text-white mb-6 uppercase tracking-tight">Stage 04: Exam Success</h3>
+                                <p class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-8">
+                                    Final preparation for NCLEX, DHA, HAAD, or MOH exams. Our proprietary test-banks and mental conditioning sessions guarantee a high first-time pass rate.
+                                </p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300 font-bold">
+                                        <span class="material-icons-outlined text-primary">done</span> NCLEX/Prometric Prep
+                                    </li>
+                                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300 font-bold">
+                                        <span class="material-icons-outlined text-primary">done</span> Mental Readiness Drills
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="rounded-3xl overflow-hidden shadow-2xl">
+                                <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?auto=format&fit=crop&q=80&w=800" alt="Exams" class="w-full h-80 object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="step-4" class="step-content">
+                        <div class="grid lg:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <span class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-8">
+                                    <span class="material-icons-outlined text-4xl">flight_takeoff</span>
+                                </span>
+                                <h3 class="text-3xl font-display font-black text-gray-950 dark:text-white mb-6 uppercase tracking-tight">Stage 05: Visa & Placement</h3>
+                                <p class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-8">
+                                    Upon passing, we connect you with top-tier healthcare institutions and manage your complete visa processing and work permit documentation.
+                                </p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300 font-bold">
+                                        <span class="material-icons-outlined text-primary">done</span> Hospital Interviews
+                                    </li>
+                                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300 font-bold">
+                                        <span class="material-icons-outlined text-primary">done</span> Express Visa Sponsorship
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="rounded-3xl overflow-hidden shadow-2xl">
+                                <img src="https://images.unsplash.com/photo-1544027993-37dbfe43562a?auto=format&fit=crop&q=80&w=800" alt="Visa" class="w-full h-80 object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div id="step-5" class="step-content">
+                        <div class="grid lg:grid-cols-2 gap-12 items-center">
+                            <div>
+                                <span class="w-16 h-16 rounded-2xl bg-primary/10 flex items-center justify-center text-primary mb-8">
+                                    <span class="material-icons-outlined text-4xl">home</span>
+                                </span>
+                                <h3 class="text-3xl font-display font-black text-gray-950 dark:text-white mb-6 uppercase tracking-tight">Stage 06: Landing & Support</h3>
+                                <p class="text-gray-600 dark:text-gray-400 text-lg leading-relaxed mb-8">
+                                    Our support doesn't end at the airport. We provide housing assistance, local orientation, and 24/7 on-ground help to ensure a smooth transition.
+                                </p>
+                                <ul class="space-y-4">
+                                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300 font-bold">
+                                        <span class="material-icons-outlined text-primary">done</span> Airport Pickup & Housing
+                                    </li>
+                                    <li class="flex items-center gap-3 text-gray-700 dark:text-gray-300 font-bold">
+                                        <span class="material-icons-outlined text-primary">done</span> Local Life Orientation
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="rounded-3xl overflow-hidden shadow-2xl">
+                                <img src="https://images.unsplash.com/photo-1449824913935-59a10b8d2000?auto=format&fit=crop&q=80&w=800" alt="Relocation" class="w-full h-80 object-cover">
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        
+        <script>
+            function switchStep(percent) {
+                // Update Progress Line
+                document.getElementById('timelineProgress').style.width = percent + '%';
+                
+                // Update Point Active State
+                const stepIndex = percent / 20;
+                document.querySelectorAll('.timeline-dot').forEach((dot, idx) => {
+                    if (idx === stepIndex) {
+                        dot.classList.add('active', 'bg-primary');
+                        dot.classList.remove('bg-gray-300', 'dark:bg-white/10');
+                    } else if (idx < stepIndex) {
+                        dot.classList.add('bg-primary');
+                        dot.classList.remove('active', 'bg-gray-300', 'dark:bg-white/10');
+                    } else {
+                        dot.classList.remove('active', 'bg-primary');
+                        dot.classList.add('bg-gray-300', 'dark:bg-white/10');
+                    }
+                });
+                
+                // Switch Content
+                document.querySelectorAll('.step-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                document.getElementById('step-' + stepIndex).classList.add('active');
+            }
+        </script>
+
+        <!-- OUR JOURNEY / TIMELINE -->
+        <section class="py-32 bg-gray-50 dark:bg-[#0B0F1A]/40 overflow-hidden relative">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="text-center mb-24" data-aos="fade-up">
+                    <span class="text-primary font-bold text-xs uppercase tracking-widest mb-4 block">Our Evolution</span>
+                    <h2 class="text-4xl md:text-6xl font-display font-black text-gray-950 dark:text-white tracking-tighter leading-none">A Legacy of <span class="text-gradient">Growth</span></h2>
+                </div>
+                
+                <div class="relative rounded-[3rem] overflow-hidden shadow-2xl border border-white/20" data-aos="zoom-in">
+                    <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=800" alt="Journey" class="w-full h-[400px] md:h-[500px] object-cover">
+                    <div class="absolute inset-0 bg-gradient-to-t from-gray-950/80 via-gray-950/20 to-transparent"></div>
+                    
+                    <!-- Stats overlay -->
+                    <div class="absolute top-1/2 left-0 right-0 -translate-y-1/2 flex justify-between px-12 md:px-20 pointer-events-none">
+                        <div class="w-24 h-24 rounded-full bg-primary/20 backdrop-blur-md flex flex-col items-center justify-center border border-primary/30 rotate-12">
+                            <span class="text-xl font-black text-primary">2015</span>
+                            <span class="text-[0.5rem] font-bold text-primary uppercase">Start</span>
+                        </div>
+                        <div class="w-32 h-32 rounded-full bg-secondary/20 backdrop-blur-md flex flex-col items-center justify-center border border-secondary/30 -rotate-12 translate-y-20 hidden md:flex">
+                            <span class="text-2xl font-black text-secondary">5000+</span>
+                            <span class="text-[0.5rem] font-bold text-secondary uppercase">Successes</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOUNDER'S VISION -->
+        <section class="py-32 bg-gray-950 dark:bg-[#131926] text-white relative overflow-hidden">
+            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/dark-matter.png')] opacity-10"></div>
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-12 gap-16 items-center">
+                    <div class="lg:col-span-7" data-aos="fade-right">
+                        <div class="w-20 h-20 rounded-3xl bg-primary/20 border border-primary/30 flex items-center justify-center text-primary mb-10">
+                            <span class="material-icons-outlined text-4xl">format_quote</span>
+                        </div>
+                        <h2 class="text-4xl md:text-6xl font-display font-medium leading-[1] tracking-tighter mb-10 italic">
+                            "We don't just relocate nurses; <br/>we ignite <span class="text-primary font-black">Global Impact</span> through empowered talent."
+                        </h2>
+                        <div class="flex items-center gap-6">
+                            <div class="w-16 h-16 rounded-2xl bg-white/10 flex items-center justify-center border border-white/20">
+                                <span class="material-icons-outlined text-primary text-3xl">psychology</span>
+                            </div>
+                            <div>
+                                <h4 class="text-2xl font-display font-black tracking-tight tracking-widest uppercase">The Founder's Vision</h4>
+                                <p class="text-gray-400 text-xs font-bold uppercase tracking-widest">Architect of Success Since 2015</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="lg:col-span-5" data-aos="fade-left">
+                        <div class="p-12 rounded-[4rem] bg-white/5 backdrop-blur-xl border border-white/10 shadow-2xl relative group">
+                            <div class="absolute -top-10 -right-10 w-40 h-40 bg-primary/20 rounded-full blur-[60px] group-hover:scale-125 transition-transform duration-700"></div>
+                            <h3 class="text-2xl font-display font-black mb-8 tracking-tighter uppercase">The WorkAway Pledge</h3>
+                            <p class="text-gray-300 font-light leading-relaxed mb-10 text-lg">
+                                We pledge to provide every candidate with a global safety net. At WorkAway, you aren't a number; you're a member of a high-performing international family. Our path is one of professional freedom and unparalleled career growth.
+                            </p>
+                            <a href="contact.html" class="inline-flex items-center gap-3 text-primary font-black hover:gap-6 transition-all uppercase text-sm tracking-[0.2em]">
+                                Join the Elite <span class="material-icons-outlined text-lg">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- TESTIMONIALS: VOICES OF SUCCESS -->
+        <section class="py-32 bg-white dark:bg-background-dark relative transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="text-center max-w-3xl mx-auto mb-20" data-aos="fade-up">
+                    <span class="text-primary font-bold text-xs uppercase tracking-[0.4em] mb-4 block">Candidate Stories</span>
+                    <h2 class="text-4xl md:text-6xl font-display font-black text-gray-950 dark:text-white mb-6 tracking-tighter leading-none">
+                        Real Success, <br/><span class="text-gradient">Real People</span>
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg font-light">
+                        Join 300+ nursing professionals who transformed their careers through our platform.
+                    </p>
+                </div>
+
+                <div class="swiper testimonialSwiper pb-12">
+                    <div class="swiper-wrapper">
+                        <!-- Testimonial 1 -->
+                        <div class="swiper-slide p-4">
+                            <div class="group p-8 rounded-[2.5rem] bg-gray-50 dark:bg-surface-dark border border-gray-100 dark:border-white/5 hover:border-primary/20 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 h-full">
+                                <div class="flex items-center gap-4 mb-8">
+                                    <div class="relative w-fit">
+                                        <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=200" alt="Neha P." class="w-16 h-16 rounded-2xl object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-950 dark:text-white leading-tight">Neha P.</h4>
+                                        <p class="text-[0.6rem] text-gray-500 uppercase tracking-widest font-bold">MUMBAI → DUBAI</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-1 mb-6 text-yellow-400">
+                                    <span class="material-icons-outlined text-sm">star</span>
+                                    <span class="material-icons-outlined text-sm">star</span>
+                                    <span class="material-icons-outlined text-sm">star</span>
+                                    <span class="material-icons-outlined text-sm">star</span>
+                                    <span class="material-icons-outlined text-sm">star</span>
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-400 leading-relaxed font-light italic">
+                                    "The transition from Mumbai to Dubai seemed impossible until I met the WorkAway team. They handled my DHA DataFlow and licensing perfectly. I'm now a proud nurse at Aster Hospital!"
+                                </p>
+                                <div class="mt-8 pt-6 border-t border-gray-100 dark:border-white/5">
+                                    <span class="text-[0.6rem] font-black text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full">Institution: Aster Hospital</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 2 -->
+                        <div class="swiper-slide p-4">
+                            <div class="group p-8 rounded-[2.5rem] bg-gray-50 dark:bg-surface-dark border border-gray-100 dark:border-white/5 hover:border-primary/20 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 h-full">
+                                <div class="flex items-center gap-4 mb-8">
+                                    <div class="relative w-fit">
+                                        <img src="https://images.unsplash.com/photo-1594824476967-48c8b964273f?auto=format&fit=crop&q=80&w=200" alt="Snehal R." class="w-16 h-16 rounded-2xl object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-950 dark:text-white leading-tight">Snehal R.</h4>
+                                        <p class="text-[0.6rem] text-gray-500 uppercase tracking-widest font-bold">KERALA → SHARJAH</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-1 mb-6 text-yellow-400">
+                                    <span class="material-icons-outlined text-sm">star</span>
+                                    <span class="material-icons-outlined text-sm">star</span>
+                                    <span class="material-icons-outlined text-sm">star</span>
+                                    <span class="material-icons-outlined text-sm">star</span>
+                                    <span class="material-icons-outlined text-sm">star</span>
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-400 leading-relaxed font-light italic">
+                                    "The MOH coaching in Rajkot was exactly what I needed. I passed my exam in the first attempt. I'm now happily working in Sharjah. Big thanks to the entire WorkAway family!"
+                                </p>
+                                <div class="mt-8 pt-6 border-t border-gray-100 dark:border-white/5">
+                                    <span class="text-[0.6rem] font-black text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full">Institution: NMC Healthcare</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Testimonial 3 -->
+                        <div class="swiper-slide p-4">
+                            <div class="group p-8 rounded-[2.5rem] bg-gray-50 dark:bg-surface-dark border border-gray-100 dark:border-white/5 hover:border-primary/20 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 h-full">
+                                <div class="flex items-center gap-4 mb-8">
+                                    <div class="relative w-fit">
+                                        <img src="https://images.unsplash.com/photo-1622253692010-333f2da6031d?auto=format&fit=crop&q=80&w=200" alt="Rahul K." class="w-16 h-16 rounded-2xl object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-950 dark:text-white leading-tight">Rahul K.</h4>
+                                        <p class="text-[0.6rem] text-gray-500 uppercase tracking-widest font-bold">RAJKOT → DUBAI</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-1 mb-6 text-yellow-400">
+                                    <span class="material-icons-outlined text-sm">star</span>
+                                    <span class="material-icons-outlined text-sm">star</span>
+                                    <span class="material-icons-outlined text-sm">star</span>
+                                    <span class="material-icons-outlined text-sm">star</span>
+                                    <span class="material-icons-outlined text-sm">star</span>
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-400 leading-relaxed font-light italic">
+                                    "WorkAway Rajkot made my Dubai dream come true. From Prometric study material to my actual job hunt at Mediclinic, they stayed with me every step of the way!"
+                                </p>
+                                <div class="mt-8 pt-6 border-t border-gray-100 dark:border-white/5">
+                                    <span class="text-[0.6rem] font-black text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full">Institution: Mediclinic Dubai</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Duplicate for smooth loop if needed, but Swiper handles it -->
+                        <!-- Testimonial 4 (Original 1 copy) -->
+                        <div class="swiper-slide p-4">
+                            <div class="group p-8 rounded-[2.5rem] bg-gray-50 dark:bg-surface-dark border border-gray-100 dark:border-white/5 hover:border-primary/20 transition-all duration-500 hover:shadow-2xl hover:shadow-primary/5 h-full">
+                                <div class="flex items-center gap-4 mb-8">
+                                    <div class="relative w-fit">
+                                        <img src="https://images.unsplash.com/photo-1559839734-2b71f1536783?auto=format&fit=crop&q=80&w=200" alt="Priya S." class="w-16 h-16 rounded-2xl object-cover grayscale group-hover:grayscale-0 transition-all duration-500">
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold text-gray-950 dark:text-white leading-tight">Priya S.</h4>
+                                        <p class="text-[0.6rem] text-gray-500 uppercase tracking-widest font-bold">KERALA → DUBAI</p>
+                                    </div>
+                                </div>
+                                <div class="flex gap-1 mb-6 text-yellow-400">
+                                    <span class="material-icons-outlined text-sm">star</span>
+                                    <span class="material-icons-outlined text-sm">star</span>
+                                    <span class="material-icons-outlined text-sm">star</span>
+                                    <span class="material-icons-outlined text-sm">star</span>
+                                    <span class="material-icons-outlined text-sm">star</span>
+                                </div>
+                                <p class="text-gray-600 dark:text-gray-400 leading-relaxed font-light italic">
+                                    "The support from WorkAway was unconditional. They helped me with my OET and DHA licensing. I am now happily settled in Dubai!"
+                                </p>
+                                <div class="mt-8 pt-6 border-t border-gray-100 dark:border-white/5">
+                                    <span class="text-[0.6rem] font-black text-primary uppercase tracking-widest bg-primary/10 px-3 py-1 rounded-full">Institution: Saudi German Hospital</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Pagination -->
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- GLOBAL IMPACT STATS -->
+    <section class="py-16 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-white/5 transition-colors duration-300">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+                
+                <!-- Stat 1 -->
+                <div class="text-center group" data-aos="fade-up">
+                    <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <span class="material-icons-outlined text-3xl">groups</span>
+                    </div>
+                    <div class="text-4xl md:text-5xl font-display font-black text-gray-950 dark:text-white mb-2 tracking-tighter">5,000+</div>
+                    <div class="text-[0.6rem] uppercase tracking-widest text-gray-500 dark:text-gray-400 font-bold">Nurses Relocated</div>
+                </div>
+
+                <!-- Stat 2 -->
+                <div class="text-center group" data-aos="fade-up" data-aos-delay="100">
+                    <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <span class="material-icons-outlined text-3xl">public</span>
+                    </div>
+                    <div class="text-4xl md:text-5xl font-display font-black text-gray-950 dark:text-white mb-2 tracking-tighter">12+</div>
+                    <div class="text-[0.6rem] uppercase tracking-widest text-gray-500 dark:text-gray-400 font-bold">Countries Covered</div>
+                </div>
+
+                <!-- Stat 3 -->
+                <div class="text-center group" data-aos="fade-up" data-aos-delay="200">
+                    <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <span class="material-icons-outlined text-3xl">verified</span>
+                    </div>
+                    <div class="text-4xl md:text-5xl font-display font-black text-gray-950 dark:text-white mb-2 tracking-tighter">98%</div>
+                    <div class="text-[0.6rem] uppercase tracking-widest text-gray-500 dark:text-gray-400 font-bold">Visa Success Rate</div>
+                </div>
+
+                <!-- Stat 4 -->
+                <div class="text-center group" data-aos="fade-up" data-aos-delay="300">
+                    <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary mb-6 group-hover:scale-110 transition-transform duration-300">
+                        <span class="material-icons-outlined text-3xl">star_rate</span>
+                    </div>
+                    <div class="text-4xl md:text-5xl font-display font-black text-gray-950 dark:text-white mb-2 tracking-tighter">10+</div>
+                    <div class="text-[0.6rem] uppercase tracking-widest text-gray-500 dark:text-gray-400 font-bold">Years Experience</div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- PROFESSIONAL FOOTER -->
+    <footer
+        class="bg-white dark:bg-background-dark border-t border-gray-100 dark:border-white/5 relative overflow-hidden transition-colors duration-300">
+        <!-- Watermark -->
+        <div
+            class="absolute top-0 left-1/2 -translate-x-1/2 text-[12rem] md:text-[20rem] font-bold text-primary/[0.05] dark:text-primary/[0.03] pointer-events-none whitespace-nowrap select-none font-display transition-colors duration-300">
+            WORKAWAY
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+
+            <!-- Newsletter Strip -->
+            <div
+                class="py-16 border-b border-gray-100 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="text-center md:text-left">
+                    <h3 class="text-2xl font-display font-bold text-gray-900 dark:text-white mb-2">Join 10,000+
+                        Nurses</h3>
+                    <p class="text-gray-500 dark:text-gray-400">Get the latest exam tips, visa updates, and job
+                        alerts.</p>
+                </div>
+                <form class="flex w-full md:w-auto gap-3">
+                    <input type="email" placeholder="Enter your email address"
+                        class="bg-gray-50 dark:bg-surface-dark border border-gray-200 dark:border-white/10 rounded-lg px-6 py-4 text-gray-900 dark:text-white focus:ring-1 focus:ring-primary focus:border-primary outline-none w-full md:w-80 placeholder-gray-400 dark:placeholder-gray-500 transition-all">
+                    <button
+                        class="bg-primary hover:bg-primary-dark text-white font-bold px-8 py-4 rounded-lg transition-colors shadow-[0_0_20px_rgba(77,208,225,0.2)] hover:shadow-[0_0_30px_rgba(77,208,225,0.4)]">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+
+            <!-- Main Content -->
+            <div
+                class="py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 border-b border-gray-100 dark:border-white/5">
+
+                <!-- Brand -->
+                <div class="lg:col-span-4">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 rounded-full overflow-hidden flex items-center justify-center shadow-md shrink-0"
+                            style="background: linear-gradient(135deg, #1CD1D1 50%, #475569 50%);">
+                            <span class="material-icons-outlined text-white text-2xl"
+                                style="transform: rotate(45deg);">flight</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-display font-black text-3xl tracking-tighter leading-none">
+                                <span class="text-[#1CD1D1]">work</span><span
+                                    class="text-[#475569] dark:text-gray-100">away</span>
+                            </span>
+                            <span
+                                class="text-[0.6rem] uppercase tracking-[0.25em] text-[#475569] dark:text-gray-400 font-bold mt-1">Make
+                                Life Better</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-8 max-w-sm">
+                        The world is waiting for you. We provide the wings to get you there through premier
+                        education and visa consultancy.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#"
+                            class="group w-12 h-12 rounded-full bg-gray-100 dark:bg-surface-dark flex items-center justify-center transition-all hover:bg-primary hover:-translate-y-1">
+                            <svg class="h-5 w-5 text-gray-500 dark:text-gray-400 group-hover:text-white"
+                                fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="group w-12 h-12 rounded-full bg-gray-100 dark:bg-surface-dark flex items-center justify-center transition-all hover:bg-primary hover:-translate-y-1">
+                            <svg class="h-5 w-5 text-gray-500 dark:text-gray-400 group-hover:text-white"
+                                fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.153 1.772c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.468 2.373c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058z">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="group w-12 h-12 rounded-full bg-gray-100 dark:bg-surface-dark flex items-center justify-center transition-all hover:bg-primary hover:-translate-y-1">
+                            <svg class="h-5 w-5 text-gray-500 dark:text-gray-400 group-hover:text-white"
+                                fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Links -->
+                <div class="lg:col-span-2 text-sm">
+                    <h4 class="text-gray-900 dark:text-white font-bold mb-8 uppercase tracking-wider">Programs
+                    </h4>
+                    <ul class="space-y-4 font-medium">
+                        <li><a href="#"
+                                class="text-gray-500 hover:text-primary transition-colors block hover:translate-x-1 duration-300">DHA
+                                (Dubai)</a></li>
+                        <li><a href="#"
+                                class="text-gray-500 hover:text-primary transition-colors block hover:translate-x-1 duration-300">HAAD
+                                (Abu Dhabi)</a></li>
+                        <li><a href="#"
+                                class="text-gray-500 hover:text-primary transition-colors block hover:translate-x-1 duration-300">MOH
+                                (UAE)</a></li>
+                        <li><a href="#"
+                                class="text-gray-500 hover:text-primary transition-colors block hover:translate-x-1 duration-300">NCLEX
+                                Mastery</a></li>
+                        <li><a href="#"
+                                class="text-gray-500 hover:text-primary transition-colors block hover:translate-x-1 duration-300">Prometric
+                                Prep</a></li>
+                        <li><a href="#"
+                                class="text-gray-500 hover:text-primary transition-colors block hover:translate-x-1 duration-300">Document
+                                Hub</a></li>
+                    </ul>
+                </div>
+
+                <div class="lg:col-span-2 text-sm">
+                    <h4 class="text-gray-900 dark:text-white font-bold mb-8 uppercase tracking-wider">Company
+                    </h4>
+                    <ul class="space-y-4">
+                        <li><a href="about.html"
+                                class="text-gray-400 hover:text-primary transition-colors block hover:translate-x-1 duration-300">About
+                                Us</a></li>
+                        <li><a href="#"
+                                class="text-gray-400 hover:text-primary transition-colors block hover:translate-x-1 duration-300">Success
+                                Stories</a></li>
+                        <li><a href="blog.html"
+                                class="text-gray-400 hover:text-primary transition-colors block hover:translate-x-1 duration-300">Our
+                                Blog</a></li>
+                        <li><a href="career.html"
+                                class="text-gray-400 hover:text-primary transition-colors block hover:translate-x-1 duration-300">Work
+                                With Us</a></li>
+                        <li><a href="contact.html"
+                                class="text-gray-400 hover:text-primary transition-colors block hover:translate-x-1 duration-300">Contact
+                                Support</a></li>
+                        <li><a href="#"
+                                class="text-gray-400 hover:text-primary transition-colors block hover:translate-x-1 duration-300">Verify
+                                Certificate</a></li>
+                    </ul>
+                </div>
+
+                <!-- Contact info -->
+                <div class="lg:col-span-4">
+                    <h4 class="text-gray-900 dark:text-white font-bold mb-8 uppercase tracking-wider">Get in
+                        Touch</h4>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4 group">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-gray-100 dark:bg-surface-dark group-hover:bg-primary group-hover:text-white flex items-center justify-center shrink-0 text-gray-500 transition-colors">
+                                <span class="material-icons-outlined">place</span>
+                            </div>
+                            <div>
+                                <p class="text-gray-900 dark:text-white font-medium mb-1">Dubai Head Office</p>
+                                <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Sheikh Zayed
+                                    Road, Dubai, UAE</p>
+                                <p class="text-primary font-bold text-sm">+971 56 155 3431</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4 group">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-gray-100 dark:bg-surface-dark group-hover:bg-primary group-hover:text-white flex items-center justify-center shrink-0 text-gray-500 transition-colors">
+                                <span class="material-icons-outlined">place</span>
+                            </div>
+                            <div>
+                                <p class="text-gray-900 dark:text-white font-medium mb-1">India Branch Office
+                                </p>
+                                <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">Rajkot,
+                                    Gujarat, India</p>
+                                <p class="text-primary font-bold text-sm">+91 96245 13738</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4 group">
+                            <div
+                                class="w-10 h-10 rounded-lg bg-gray-100 dark:bg-surface-dark group-hover:bg-primary group-hover:text-white flex items-center justify-center shrink-0 text-gray-500 transition-colors">
+                                <span class="material-icons-outlined">mail</span>
+                            </div>
+                            <div>
+                                <p class="text-gray-900 dark:text-white font-medium mb-1">Email Support</p>
+                                <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">
+                                    workaway2141@gmail.com</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Copyright -->
+            <div class="py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-gray-500">
+                    © 2026 Work Away Education Pvt Ltd. All rights reserved.
+                </p>
+                <div class="flex gap-6 text-sm">
+                    <a href="#"
+                        class="text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">Privacy</a>
+                    <a href="#"
+                        class="text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">Terms</a>
+                    <a href="#"
+                        class="text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">Cookies</a>
+                    <a href="#"
+                        class="text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="js/script.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        
+        // Swiper Initialization
+        const swiper = new Swiper('.testimonialSwiper', {
+            slidesPerView: 1,
+            spaceBetween: 30,
+            loop: true,
+            autoplay: {
+                delay: 3000,
+                disableOnInteraction: false,
+            },
+            speed: 1000,
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 1,
+                },
+                768: {
+                    slidesPerView: 2,
+                },
+                1024: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 20) { nav.classList.add('py-2', 'shadow-md'); }
+            else { nav.classList.remove('py-2', 'shadow-md'); }
+        });
+        const btn = document.getElementById('mobile-menu-btn'); const menu = document.getElementById('mobile-menu-panel'); if (btn && menu) { btn.addEventListener('click', () => { menu.classList.toggle('hidden'); }); }
+    </script>
+</body>
+
+</html>

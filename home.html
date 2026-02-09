@@ -1,0 +1,1172 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>Work Away - Global Nursing Careers</title>
+    <link href="https://fonts.googleapis.com/" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/?plugins=forms,typography"></script>
+    <script src="js/tailwind.config.js"></script>
+    <link href="css/style.css" rel="stylesheet" />
+    <style>
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.18); }
+        .dark .glass { background: rgba(31, 41, 55, 0.7); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.5); }
+        .dark .glass-card { background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .blob { position: absolute; width: 500px; height: 500px; background: linear-gradient(180deg, rgba(77, 208, 225, 0.4) 0%, rgba(84, 110, 122, 0.1) 100%); border-radius: 50%; filter: blur(80px); z-index: -1; opacity: 0.6; animation: move 25s infinite alternate; }
+        @keyframes move { from { transform: translate(0, 0) scale(1); } to { transform: translate(20px, -20px) scale(1.1); } }
+        .text-gradient { background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-image: linear-gradient(to right, #4DD0E1, #26c6da); }
+    </style>
+    <script>
+        // Theme Management
+        function initTheme() {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        }
+        
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        // Initialize immediately
+        initTheme();
+    </script>
+</head>
+
+<body class="bg-gray-50 dark:bg-background-dark text-text-light dark:text-text-dark font-body transition-colors duration-300">
+    <div class="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-blue-400 to-secondary z-[60]"></div>
+    
+    <!-- NAVIGATION (Standardized) -->
+    <nav class="fixed w-full z-50 transition-all duration-300 glass shadow-sm" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.location.href='home.html'">
+                    <!-- Official Logo Icon -->
+                    <div class="relative w-11 h-11 rounded-full overflow-hidden mr-3 shadow-sm flex items-center justify-center" style="background: linear-gradient(135deg, #1CD1D1 50%, #475569 50%);">
+                        <span class="material-icons-outlined text-white text-2xl" style="transform: rotate(45deg);">flight</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-display font-black text-2xl tracking-tighter leading-none">
+                            <span class="text-[#1CD1D1]">work</span><span class="text-[#475569] dark:text-white">away</span>
+                        </span>
+                        <span class="text-[0.55rem] uppercase tracking-[0.25em] text-[#475569] dark:text-gray-400 font-bold mt-1">Make Life Better</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="home.html" class="px-4 py-2 text-sm font-bold text-primary rounded-full bg-primary/10 transition-colors">Home</a>
+                    <a href="services.html" class="px-4 py-2 text-sm font-bold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">Services</a>
+                    <a href="blog.html" class="px-4 py-2 text-sm font-bold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">Blog</a>
+                    <a href="career.html" class="px-4 py-2 text-sm font-bold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">Career</a>
+                    <a href="about.html" class="px-4 py-2 text-sm font-bold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">About</a>
+                    <a href="contact.html" class="px-4 py-2 text-sm font-bold text-gray-500 dark:text-gray-400 hover:text-primary dark:hover:text-primary transition-colors">Contact</a>
+                </div>
+                <div class="hidden md:flex items-center gap-4">
+                    <button onclick="toggleTheme()" class="p-2 rounded-full text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all focus:outline-none">
+                        <span class="material-icons-outlined dark:hidden">dark_mode</span>
+                        <span class="material-icons-outlined hidden dark:inline text-yellow-300">light_mode</span>
+                    </button>
+                    <a href="#inquiry" class="px-8 py-2.5 rounded-full bg-[#1CD1D1] text-white text-sm font-bold shadow-lg shadow-cyan-500/20 hover:shadow-[#1CD1D1]/40 hover:-translate-y-0.5 transition-all">Inquiry</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="p-2 rounded-md text-gray-600 dark:text-gray-200" id="mobile-menu-btn"><span class="material-icons-outlined text-2xl">menu</span></button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden hidden bg-white dark:bg-surface-dark border-t border-gray-100 dark:border-gray-800" id="mobile-menu-panel">
+            <div class="px-4 pt-4 pb-6 space-y-2">
+                <a href="home.html" class="block px-4 py-3 rounded-lg bg-primary/10 text-primary font-bold">Home</a>
+                <a href="services.html" class="block px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 font-medium hover:bg-gray-50 dark:hover:bg-gray-800">Services</a>
+                <a href="blog.html" class="block px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 font-medium hover:bg-gray-50 dark:hover:bg-gray-800">Blog</a>
+                <a href="career.html" class="block px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 font-medium hover:bg-gray-50 dark:hover:bg-gray-800">Career</a>
+                <a href="about.html" class="block px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 font-medium hover:bg-gray-50 dark:hover:bg-gray-800">About</a>
+                <a href="contact.html" class="block px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 font-medium hover:bg-gray-50 dark:hover:bg-gray-800">Contact</a>
+                <a href="#inquiry" class="block px-4 py-3 rounded-lg bg-primary text-white font-bold text-center">Inquiry</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- MAIN CONTENT -->
+    <main>
+        <!-- HERO SECTION (Standardized) -->
+        <section class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+            <div class="blob top-0 left-0 transform -translate-x-1/2 -translate-y-1/2"></div>
+            <div class="blob bottom-0 right-0 transform translate-x-1/3 translate-y-1/3 bg-blue-400"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
+                    <div data-aos="fade-right" data-aos-duration="1000">
+                        <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full glass-card mb-8 shadow-sm">
+                            <span class="flex h-3 w-3 relative"><span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span><span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span></span>
+                            <span class="text-xs font-bold uppercase tracking-wider text-secondary dark:text-gray-300">New Batches: April 2026</span>
+                        </div>
+                        <h1 class="text-5xl lg:text-7xl font-display font-black text-gray-950 dark:text-white leading-[1.1] mb-8 tracking-tighter">Build Your <br/><span class="text-gradient">Healthcare</span><br/>Career In <span class="text-gradient">Dubai</span></h1>
+                        <p class="text-lg md:text-xl text-gray-600 dark:text-gray-400 mb-10 max-w-lg leading-relaxed font-light">The ultimate launchpad for healthcare professionals aiming for the UAE. Simplifying the professional licensing process and ensuring your quality of life. <span class="text-primary font-bold italic">"make life better"</span></p>
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="https://wa.me/919624513738" target="_blank" class="flex items-center justify-center px-8 py-4 rounded-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                                WhatsApp
+                                <svg class="w-6 h-6 ml-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
+                                </svg>
+                            </a>
+                            <a href="#inquiry" class="flex items-center justify-center px-8 py-4 rounded-full glass-card hover:bg-white dark:hover:bg-gray-800 text-gray-800 dark:text-white font-bold text-lg border border-gray-200 dark:border-gray-700 transition-all group">
+                                Inquiry Now
+                                <span class="material-icons-outlined ml-2 text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                            </a>
+                        </div>
+                    </div>
+
+                    <!-- Reverted Hero Image Block (Restored specific rotated styling) -->
+                    <div class="relative" data-aos="fade-left" data-aos-duration="1000">
+                        <div class="relative mx-auto w-full rounded-lg shadow-2xl lg:max-w-md transform rotate-2 hover:rotate-0 transition-transform duration-500">
+                            <div class="relative block w-full bg-white dark:bg-surface-dark rounded-3xl overflow-hidden border border-gray-100 dark:border-gray-700">
+                                <div class="relative h-64 sm:h-80 lg:h-96 bg-gradient-to-br from-teal-50 to-blue-50 dark:from-gray-800 dark:to-gray-900 flex items-center justify-center">
+                                    <img alt="Medical professional" class="absolute inset-0 w-full h-full object-cover opacity-100 dark:opacity-80 transition-opacity duration-500" src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=800" />
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Floating Card -->
+                        <div class="absolute -bottom-6 -left-6 md:-left-12 glass-card p-6 rounded-3xl shadow-2xl max-w-[280px] animate-float">
+                            <div class="flex items-center gap-4 mb-4">
+                                <div class="w-12 h-12 rounded-2xl bg-primary/20 flex items-center justify-center text-primary">
+                                    <span class="material-icons-outlined">school</span>
+                                </div>
+                                <div>
+                                    <h4 class="text-sm font-bold text-gray-900 dark:text-white">Exam Success Rate</h4>
+                                    <p class="text-[0.7rem] text-gray-500">Join our top achievers</p>
+                                </div>
+                            </div>
+                            <div class="space-y-3">
+                                <div class="h-2 w-full bg-gray-100 dark:bg-white/5 rounded-full overflow-hidden">
+                                    <div class="h-full bg-primary w-[95%] rounded-full"></div>
+                                </div>
+                                <div class="text-right text-xs font-bold text-primary italic">95% Success rate</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Partners -->
+        <section class="py-10 border-y border-gray-200 dark:border-gray-800 bg-white dark:bg-surface-dark/50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <p class="text-sm font-semibold text-gray-400 uppercase tracking-widest mb-8">Recognized By Top Institutions</p>
+                <div class="flex flex-wrap justify-center items-center gap-10 md:gap-20">
+                    <div class="relative h-24 md:h-32">
+                        <!-- Light Mode (Color) -->
+                        <img src="images/dha_logo_color.png" alt="DHA" class="h-full object-contain dark:hidden mix-blend-multiply opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer" />
+                        <!-- Dark Mode (White) -->
+                        <img src="images/dha_logo_dark.png" alt="DHA" class="h-full object-contain hidden dark:block mix-blend-screen opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer" />
+                    </div>
+                    <div class="relative h-24 md:h-32">
+                        <!-- Light Mode (Color) -->
+                        <img src="images/haad_logo_color.png" alt="HAAD" class="h-full object-contain dark:hidden mix-blend-multiply opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer" />
+                        <!-- Dark Mode (White) -->
+                        <img src="images/haad_logo_dark.png" alt="HAAD" class="h-full object-contain hidden dark:block mix-blend-screen opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer" />
+                    </div>
+                    <div class="relative h-24 md:h-32">
+                        <!-- Light Mode (Color) -->
+                        <img src="images/moh_logo_color.png" alt="MOH" class="h-full object-contain dark:hidden mix-blend-multiply opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer" />
+                        <!-- Dark Mode (White) -->
+                        <img src="images/moh_logo_dark.png" alt="MOH" class="h-full object-contain hidden dark:block mix-blend-screen opacity-60 grayscale hover:grayscale-0 hover:opacity-100 transition-all duration-500 cursor-pointer" />
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Stats -->
+        <section class="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-background-dark dark:to-surface-dark">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center divide-x divide-gray-100 dark:divide-gray-800">
+                    <div data-aos="fade-up"><p class="text-5xl font-display font-black text-primary mb-2 tracking-tighter">300+</p><p class="text-gray-500 text-sm font-bold uppercase tracking-widest text-xs">Student Placed</p></div>
+                    <div data-aos="fade-up" data-aos-delay="100"><p class="text-5xl font-display font-black text-secondary mb-2 tracking-tighter">5+</p><p class="text-gray-500 text-sm font-bold uppercase tracking-widest text-xs">Years Experience</p></div>
+                    <div data-aos="fade-up" data-aos-delay="300"><p class="text-5xl font-display font-black text-primary mb-2 tracking-tighter">24/7</p><p class="text-gray-500 text-sm font-bold uppercase tracking-widest text-xs">Support</p></div>
+                    <div data-aos="fade-up" data-aos-delay="200"><p class="text-5xl font-display font-black text-secondary mb-2 tracking-tighter">100%</p><p class="text-gray-500 text-sm font-bold uppercase tracking-widest text-xs">Job Placement</p></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- WHO ARE WE: STORYTELLING SECTION -->
+        <section class="py-24 bg-white dark:bg-[#0B0F1A] transition-colors duration-500 overflow-hidden" id="about-us">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <div class="grid lg:grid-cols-2 gap-16 items-center">
+                    <!-- Image Side -->
+                    <div class="relative" data-aos="fade-right">
+                        <div class="relative z-10 rounded-[3rem] overflow-hidden shadow-2xl group bg-blue-50">
+                            <!-- Overlay Label -->
+                            <div class="absolute top-8 left-8 z-30">
+                                <span class="px-5 py-2 rounded-full glass-card text-xs font-black uppercase tracking-widest text-[#1CD1D1] shadow-lg">Our Mission</span>
+                            </div>
+                            
+                            <!-- Main Image - Troubleshooting Placeholder -->
+                            <img src="https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=1200" alt="Healthcare Excellence" class="w-full h-[600px] object-cover transition-transform duration-1000 group-hover:scale-105">
+                            
+                            <!-- Floating Experience Card -->
+                            <div class="absolute bottom-10 right-10 z-30 bg-[#131926]/90 backdrop-blur-md p-6 rounded-2xl border border-white/10 shadow-2xl" data-aos="zoom-in" data-aos-delay="400">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-12 h-12 rounded-xl bg-[#1CD1D1]/20 flex items-center justify-center text-[#1CD1D1]">
+                                        <span class="material-icons-outlined">verified_user</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-3xl font-display font-black text-white tracking-tighter">5+</h4>
+                                        <p class="text-[0.65rem] font-bold text-gray-400 uppercase tracking-widest leading-none mt-1">Years of Excellence</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Background Accents -->
+                        <div class="absolute -bottom-10 -left-10 w-40 h-40 bg-primary/30 rounded-full blur-[80px] z-0"></div>
+                    </div>
+
+                    <!-- Text Side -->
+                    <div data-aos="fade-left">
+                        <span class="text-primary font-bold text-[0.65rem] uppercase tracking-[0.4em] mb-4 block">An Initiative by Dev Ahir (LIVE UPDATED)</span>
+                        <h2 class="text-4xl md:text-5xl lg:text-7xl font-display font-black text-gray-950 dark:text-white tracking-tighter leading-[1.05] mb-8">
+                            Unlock Global <br/>
+                            <span class="text-gradient">Healthcare Potential</span>
+                        </h2>
+                        <p class="text-lg text-gray-600 dark:text-gray-400 font-light leading-relaxed mb-12 max-w-xl">
+                            WorkAway was founded on a simple yet powerful belief: that talent shouldn't be limited by complexity. We simplify the global licensing process for DHA, HAAD, and MOH, bridging the gap between healthcare talent and world-class opportunities.
+                        </p>
+                        
+                        <div class="grid sm:grid-cols-2 gap-8">
+                            <!-- Mission Card -->
+                            <div class="space-y-4">
+                                <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+                                    <span class="material-icons-outlined text-2xl">rocket_launch</span>
+                                </div>
+                                <h4 class="text-lg font-black text-gray-900 dark:text-white uppercase tracking-tighter">Our Mission</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed font-light">
+                                    To provide comprehensive support and guidance for obtaining country-specific licenses through official examinations, ensuring quality healthcare worldwide.
+                                </p>
+                            </div>
+                            
+                            <!-- Vision Card -->
+                            <div class="space-y-4">
+                                <div class="w-12 h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary">
+                                    <span class="material-icons-outlined text-2xl">visibility</span>
+                                </div>
+                                <h4 class="text-lg font-black text-gray-900 dark:text-white uppercase tracking-tighter">Our Vision</h4>
+                                <p class="text-sm text-gray-500 dark:text-gray-400 leading-relaxed font-light">
+                                    To empower healthcare professionals globally by simplifying the professional licensing process, enhancing careers, and elevating global healthcare standards.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="mt-16 pt-10 border-t border-gray-100 dark:border-white/5 flex items-center gap-6">
+                            <div class="flex -space-x-3">
+                                <div class="w-12 h-12 rounded-full border-2 border-white dark:border-[#0B0F1A] bg-gray-200 overflow-hidden shadow-lg"><img src="images/d86fa72ce90c909679908965c73696c1.jpg" alt="Founder" class="w-full h-full object-cover"></div>
+                                <div class="w-12 h-12 rounded-full border-2 border-white dark:border-[#0B0F1A] bg-gray-900 flex items-center justify-center shadow-lg"><span class="text-[0.6rem] font-bold text-white tracking-widest uppercase">Team</span></div>
+                            </div>
+                            <p class="text-sm text-gray-500 font-medium">Joined by <span class="text-gray-900 dark:text-white font-black">300+</span> ambitious nurses worldwide.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Features -->
+        <section class="py-24 bg-gray-50 dark:bg-[#131926]/30 relative transition-colors duration-500">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-2xl mx-auto mb-20" data-aos="fade-up">
+                    <span class="text-primary font-bold text-[0.65rem] uppercase tracking-[0.4em] mb-4 block">Why Choose US</span>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-black text-gray-950 dark:text-white tracking-tighter leading-[1.1]">
+                        Designed for Your <br/><span class="text-gradient">Ultimate Success</span>
+                    </h2>
+                </div>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <div class="group bg-white dark:bg-[#131926] p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl border border-gray-100 dark:border-white/[0.04] transition-all duration-500 hover:-translate-y-2" data-aos="fade-up">
+                        <div class="w-16 h-16 bg-primary/10 dark:bg-primary/5 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                            <span class="material-icons-outlined text-primary text-3xl">public</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-950 dark:text-white mb-4">Global Network</h3>
+                        <p class="text-gray-500 dark:text-gray-400 font-light leading-relaxed">Exclusive access to premier hospital recruiters and medical boards across 4 continents.</p>
+                    </div>
+                    <div class="group bg-white dark:bg-[#131926] p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl border border-gray-100 dark:border-white/[0.04] transition-all duration-500 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="100">
+                        <div class="w-16 h-16 bg-primary/10 dark:bg-primary/5 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                            <span class="material-icons-outlined text-primary text-3xl">verified_user</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-950 dark:text-white mb-4">Trust & Compliance</h3>
+                        <p class="text-gray-500 dark:text-gray-400 font-light leading-relaxed">Affordable professional fees with a guaranteed refund policy. We prioritize your licensing authenticity.</p>
+                    </div>
+                    <div class="group bg-white dark:bg-[#131926] p-10 rounded-[2.5rem] shadow-sm hover:shadow-2xl border border-gray-100 dark:border-white/[0.04] transition-all duration-500 hover:-translate-y-2" data-aos="fade-up" data-aos-delay="200">
+                        <div class="w-16 h-16 bg-primary/10 dark:bg-primary/5 rounded-2xl flex items-center justify-center mb-8 group-hover:scale-110 transition-transform">
+                            <span class="material-icons-outlined text-primary text-3xl">support_agent</span>
+                        </div>
+                        <h3 class="text-xl font-bold text-gray-950 dark:text-white mb-4">Legal Precision</h3>
+                        <p class="text-gray-500 dark:text-gray-400 font-light leading-relaxed">Expert legal faculty ensuring your visa documentation has a 100% first-time success record.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PREMIUM COURSES: ARCHITECTURAL GRID -->
+        <section class="py-24 bg-[#FFFFFF] dark:bg-[#0B0F1A] transition-colors duration-500 overflow-hidden" id="courses">
+            <div class="max-w-7xl mx-auto px-6 lg:px-8">
+                <!-- Header with Meta-Text -->
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6" data-aos="fade-up">
+                    <div class="max-w-xl">
+                        <span class="text-primary font-bold text-[0.65rem] uppercase tracking-[0.4em] mb-4 block">Expert-Led Training</span>
+                        <h2 class="text-4xl md:text-5xl font-display font-black text-gray-950 dark:text-white tracking-tighter leading-tight">
+                            Premium <span class="text-gradient">Services</span>
+                        </h2>
+                    </div>
+                    <a href="services.html" class="group flex items-center gap-3 px-6 py-3 rounded-2xl bg-gray-50 dark:bg-white/5 border border-gray-100 dark:border-white/10 text-gray-600 dark:text-gray-300 font-bold hover:bg-primary hover:text-gray-900 transition-all">
+                        Explore All Services
+                        <span class="material-icons-outlined text-xl group-hover:translate-x-1 transition-transform">east</span>
+                    </a>
+                </div>
+
+                <!-- Enhanced Course Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+                    <!-- Course Item: NCLEX -->
+                    <div class="group relative bg-white dark:bg-[#131926] rounded-[2.5rem] overflow-hidden border border-gray-100 dark:border-white/[0.04] shadow-sm hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.5)] transition-all duration-700 flex flex-col h-full" data-aos="fade-up">
+                        <div class="relative h-64 overflow-hidden shrink-0">
+                            <img src="https://images.unsplash.com/photo-1631248055158-edec7a3c072b?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60"></div>
+                            <!-- <div class="absolute bottom-6 left-6 inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-primary/90 text-gray-900 text-[0.6rem] font-black uppercase tracking-widest backdrop-blur-md">
+                                <span class="material-icons text-xs">star</span>Most Popular
+                            </div> -->
+                        </div>
+                        <div class="p-8 flex flex-col flex-grow">
+                            <h3 class="text-2xl font-display font-bold text-gray-950 dark:text-white mb-3 tracking-tight">Licensing <br>(DHA, HAAD, MOH)</h3>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm font-light leading-relaxed mb-8">Expert coaching and documentation support for healthcare professionals seeking licensure in the UAE and Middle East.</p>
+                            <div class="flex flex-col sm:flex-row gap-3 pt-6 border-t border-gray-50 dark:border-white/5 mt-auto">
+                                <a href="https://wa.me/919624513738" target="_blank" class="flex-1 flex items-center justify-center px-4 py-3 rounded-xl bg-[#25D366] hover:bg-[#128C7E] text-white font-bold text-sm shadow-md hover:shadow-lg transition-all">
+                                    WhatsApp
+                                    <svg class="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
+                                    </svg>
+                                </a>
+                                <a href="#inquiry" class="flex-1 flex items-center justify-center px-4 py-3 rounded-xl bg-gray-950 dark:bg-white text-white dark:text-gray-950 font-bold text-sm hover:bg-primary transition-all group">
+                                    Inquiry Now
+                                    <span class="material-icons-outlined ml-2 text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course Item: IELTS -->
+                    <div class="group relative bg-white dark:bg-[#131926] rounded-[2.5rem] overflow-hidden border border-gray-100 dark:border-white/[0.04] shadow-sm hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.5)] transition-all duration-700 flex flex-col h-full" data-aos="fade-up" data-aos-delay="100">
+                        <div class="relative h-64 overflow-hidden shrink-0">
+                            <img src="https://images.unsplash.com/photo-1527689368864-3a821dbccc34?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60"></div>
+                            <!-- <div class="absolute bottom-6 left-6 inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-gray-100/90 text-gray-900 text-[0.6rem] font-black uppercase tracking-widest backdrop-blur-md">
+                                Expert Led
+                            </div> -->
+                        </div>
+                        <div class="p-8 flex flex-col flex-grow">
+                            <h3 class="text-2xl font-display font-bold text-gray-950 dark:text-white mb-3 tracking-tight">Training & Classes</h3>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm font-light leading-relaxed mb-8">Master your exams with our expert-led coaching, featuring live interactive sessions, high-yield study resources, and adaptive mock simulations for global nursing standards.</p>
+                            <div class="flex flex-col sm:flex-row gap-3 pt-6 border-t border-gray-50 dark:border-white/5 mt-auto">
+                                <a href="https://wa.me/919624513738" target="_blank" class="flex-1 flex items-center justify-center px-4 py-3 rounded-xl bg-[#25D366] hover:bg-[#128C7E] text-white font-bold text-sm shadow-md hover:shadow-lg transition-all">
+                                    WhatsApp
+                                    <svg class="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
+                                    </svg>
+                                </a>
+                                <a href="#inquiry" class="flex-1 flex items-center justify-center px-4 py-3 rounded-xl bg-gray-950 dark:bg-white text-white dark:text-gray-950 font-bold text-sm hover:bg-primary transition-all group">
+                                    Inquiry Now
+                                    <span class="material-icons-outlined ml-2 text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Course Item: OET -->
+                    <div class="group relative bg-white dark:bg-[#131926] rounded-[2.5rem] overflow-hidden border border-gray-100 dark:border-white/[0.04] shadow-sm hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_40px_80px_-20px_rgba(0,0,0,0.5)] transition-all duration-700 flex flex-col h-full" data-aos="fade-up" data-aos-delay="200">
+                        <div class="relative h-64 overflow-hidden shrink-0">
+                            <img src="https://images.unsplash.com/photo-1454165833762-610402e8aef3?auto=format&fit=crop&q=80&w=800" class="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0 group-hover:scale-110 transition-all duration-1000">
+                            <div class="absolute inset-0 bg-gradient-to-t from-gray-900 via-transparent to-transparent opacity-60"></div>
+                            <!-- <div class="absolute bottom-6 left-6 inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-orange-100/90 text-orange-600 text-[0.6rem] font-black uppercase tracking-widest backdrop-blur-md">
+                                Healthcare Focus
+                            </div> -->
+                        </div>
+                        <div class="p-8 flex flex-col flex-grow">
+                            <h3 class="text-2xl font-display font-bold text-gray-950 dark:text-white mb-3 tracking-tight">Job Assistance & Consultation</h3>
+                            <p class="text-gray-500 dark:text-gray-400 text-sm font-light leading-relaxed mb-8">Unlock top-tier career opportunities in the UAE with personalized consultation, meticulous visa documentation, and direct recruitment placement support.</p>
+                            <div class="flex flex-col sm:flex-row gap-3 pt-6 border-t border-gray-50 dark:border-white/5 mt-auto">
+                                <a href="https://wa.me/919624513738" target="_blank" class="flex-1 flex items-center justify-center px-4 py-3 rounded-xl bg-[#25D366] hover:bg-[#128C7E] text-white font-bold text-sm shadow-md hover:shadow-lg transition-all">
+                                    WhatsApp
+                                    <svg class="w-4 h-4 ml-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
+                                    </svg>
+                                </a>
+                                <a href="#inquiry" class="flex-1 flex items-center justify-center px-4 py-3 rounded-xl bg-gray-950 dark:bg-white text-white dark:text-gray-950 font-bold text-sm hover:bg-primary transition-all group">
+                                    Inquiry Now
+                                    <span class="material-icons-outlined ml-2 text-sm group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PREMIUM LEAD MAGNET: FREE RESOURCES -->
+        <section class="py-24 bg-white dark:bg-[#0B0F1A] relative overflow-hidden transition-colors duration-500">
+            <!-- Background Accents -->
+            <div class="absolute top-0 right-0 w-[500px] h-[500px] bg-primary/5 rounded-full blur-[120px] -mr-64 -mt-64"></div>
+            <div class="absolute bottom-0 left-0 w-[500px] h-[500px] bg-secondary/5 rounded-full blur-[120px] -ml-64 -mb-64"></div>
+
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+                <div class="relative bg-gradient-to-br from-gray-900 to-gray-800 dark:from-[#131926] dark:to-[#1a2235] rounded-[2.5rem] overflow-hidden shadow-2xl" data-aos="zoom-in">
+                    <!-- Abstract Decorative Pattern -->
+                    <div class="absolute inset-0 opacity-10 pointer-events-none bg-[url('https://www.transparenttextures.com/patterns/cubes.png')]"></div>
+                    
+                    <div class="grid lg:grid-cols-2 gap-12 items-center p-8 md:p-16">
+                        <div>
+                            <!-- <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 border border-primary/30 text-primary text-[0.65rem] font-black uppercase tracking-widest mb-6">
+                                <span class="relative flex h-2 w-2">
+                                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+                                    <span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+                                </span>
+                                High Value Lead Magnet
+                            </div> -->
+                            <h2 class="text-5xl md:text-6xl lg:text-5xl font-display text-white leading-[1.1] tracking-tight mb-8">
+                                Free Guidance For <br/>
+                                <span class="text-gradient">Healthcare Career In Dubai</span>
+                            </h2>
+                            <p class="text-gray-400 text-lg font-light leading-relaxed mb-10 max-w-xl">
+                                Gain the competitive edge with our curated selection of high-yield study materials, designed by global nursing experts.
+                            </p>
+                            
+                            <div class="space-y-6 mb-12">
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                                        <span class="material-icons-outlined text-primary text-xl">map</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-bold text-lg">DHA, HAAD & MOH Roadmap</h4>
+                                        <p class="text-gray-500 text-sm">A complete step-by-step guide to UAE professional licensing (PDF)</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                                        <span class="material-icons-outlined text-primary text-xl">model_training</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-bold text-lg">Exam Mastery Resource Pack</h4>
+                                        <p class="text-gray-500 text-sm">High-yield study notes and practice questions for Prometric exams</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-start gap-4">
+                                    <div class="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                                        <span class="material-icons-outlined text-primary text-xl">assignment_ind</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="text-white font-bold text-lg">Career Success Kit</h4>
+                                        <p class="text-gray-500 text-sm">Expert CV templates and interview strategies for Dubai hospitals</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="flex flex-col sm:flex-row gap-4">
+                                <a href="https://wa.me/919624513738" target="_blank" class="flex items-center justify-center px-8 py-4 rounded-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                                    WhatsApp
+                                    <svg class="w-6 h-6 ml-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
+                                    </svg>
+                                </a>
+                                <a href="#inquiry" class="flex items-center justify-center px-8 py-4 rounded-full bg-white dark:bg-white/10 text-gray-900 dark:text-white font-bold text-lg hover:bg-gray-100 dark:hover:bg-white/20 transition-all group">
+                                    Inquiry Now
+                                    <span class="material-icons-outlined ml-2 text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="relative hidden lg:block">
+                            <div class="relative z-10 p-2 bg-gradient-to-br from-white/10 to-transparent backdrop-blur-md rounded-[2rem] border border-white/20 transform rotate-3 hover:rotate-0 transition-all duration-700 shadow-2xl">
+                                <div class="bg-gray-900 rounded-[1.8rem] overflow-hidden border border-white/5 py-12 px-8 flex flex-col items-center justify-center text-center">
+                                    <div class="w-24 h-24 rounded-3xl bg-primary/10 flex items-center justify-center mb-6">
+                                        <span class="material-icons-outlined text-5xl text-primary animate-bounce">folder_zip</span>
+                                    </div>
+                                    <h3 class="text-2xl font-bold text-white mb-2">WorkAway Pro Bundle</h3>
+                                    <p class="text-gray-400 text-sm mb-6">Everything you need to kickstart <br/> your international career.</p>
+                                    <div class="w-full h-[1px] bg-white/10 mb-6"></div>
+                                    <div class="flex justify-between w-full text-xs font-bold uppercase tracking-widest">
+                                        <span class="text-gray-500">Files: 12 Guides</span>
+                                        <span class="text-primary">Size: 18.4 MB</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- Decorative glow -->
+                            <div class="absolute inset-0 bg-primary/20 blur-[100px] pointer-events-none"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- COMPACT LUXURY UI COMPARISON: THE WORKAWAY EDGE -->
+        <section class="relative py-20 bg-[#FFFFFF] dark:bg-[#0B0F1A] transition-colors duration-700 overflow-hidden">
+            <!-- Structural Decor: Ultra-subtle grid pattern -->
+            <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/carbon-fibre.png')] opacity-[0.02] dark:opacity-[0.05] pointer-events-none"></div>
+            <div class="absolute top-0 left-0 w-full h-px bg-gradient-to-r from-transparent via-gray-200 dark:via-white/10 to-transparent"></div>
+
+            <div class="max-w-7xl mx-auto px-6 lg:px-8 relative z-10">
+                <!-- Section Header: Balanced Layout -->
+                <div class="flex flex-col md:flex-row items-end justify-between mb-16 gap-6" data-aos="fade-up">
+                    <div class="max-w-2xl">
+                        <span class="text-primary font-bold text-[0.65rem] uppercase tracking-[0.4em] mb-4 block">Benchmark Comparison</span>
+                        <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-black text-gray-950 dark:text-white leading-[1.1] tracking-tighter">
+                            The <span class="text-gradient">WorkAway</span> Standard
+                        </h2>
+                    </div>
+                    <div class="text-left md:text-right">
+                        <p class="text-gray-500 dark:text-gray-400 text-base md:text-lg font-light leading-relaxed max-w-sm">
+                            Setting a new global precedent for international healthcare education and excellence.
+                        </p>
+                    </div>
+                </div>
+
+                <div class="max-w-5xl mx-auto">
+                    <!-- Refined Comparison Interface -->
+                    <div class="relative bg-white dark:bg-[#131926] rounded-[2.5rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.05)] dark:shadow-[0_30px_60px_-15px_rgba(0,0,0,0.4)] border border-gray-100 dark:border-white/[0.04] overflow-hidden" data-aos="zoom-in">
+                        
+                        <!-- THE HEADER STRIP -->
+                        <div class="grid grid-cols-12 bg-gray-50/30 dark:bg-white/[0.01] border-b border-gray-100 dark:border-white/[0.04]">
+                            <div class="col-span-12 md:col-span-4 p-8 hidden md:flex items-end">
+                                <h3 class="text-[0.6rem] font-black uppercase tracking-[0.4em] text-gray-400">Core Performance</h3>
+                            </div>
+                            <div class="col-span-6 md:col-span-4 p-8 text-center relative bg-primary/[0.03] dark:bg-primary/[0.06] border-x border-gray-100 dark:border-white/[0.04]">
+                                <div class="absolute top-0 left-0 w-full h-1 bg-primary"></div>
+                                <span class="text-primary font-black text-[0.6rem] uppercase tracking-[0.2em] mb-2 block">Premium Choice</span>
+                                <h4 class="text-2xl font-display font-bold text-gray-900 dark:text-white">WorkAway</h4>
+                            </div>
+                            <div class="col-span-6 md:col-span-4 p-8 text-center flex flex-col justify-center items-center">
+                                <span class="text-gray-500 dark:text-gray-400 font-bold text-[0.6rem] uppercase tracking-[0.2em] mb-2 block">Generic</span>
+                                <h4 class="text-2xl font-display font-medium text-gray-500 dark:text-gray-400">Others</h4>
+                            </div>
+                        </div>
+
+                        <!-- THE DATA ROWS -->
+                        <div class="divide-y divide-gray-50 dark:divide-white/[0.04]">
+                            
+                            <!-- Row: Success Rate -->
+                            <div class="grid grid-cols-12 group transition-all duration-500 hover:bg-gray-50/50 dark:hover:bg-white/[0.01]">
+                                <div class="col-span-12 md:col-span-4 p-8 flex items-center gap-4 md:gap-6 border-b md:border-b-0 border-gray-50 dark:border-white/[0.04]">
+                                    <div class="w-12 h-12 rounded-2xl bg-primary/10 dark:bg-primary/5 flex items-center justify-center text-primary shadow-inner group-hover:scale-105 transition-transform">
+                                        <span class="material-icons-outlined text-2xl">verified_user</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-lg md:text-xl font-bold text-gray-950 dark:text-white tracking-tight">Success Rate</p>
+                                        <p class="text-[0.6rem] text-gray-400 dark:text-gray-500 font-medium uppercase tracking-widest mt-0.5">Verified Outcomes</p>
+                                    </div>
+                                </div>
+                                <div class="col-span-6 md:col-span-4 p-8 text-center bg-primary/[0.02] dark:bg-primary/[0.04] border-x border-gray-100 dark:border-white/[0.04] flex flex-col items-center justify-center">
+                                    <div class="relative inline-block">
+                                        <span class="text-4xl md:text-6xl font-display font-black text-gray-950 dark:text-white tracking-tighter">98.5</span>
+                                        <span class="absolute -right-6 top-0 text-2xl font-black text-primary">%</span>
+                                    </div>
+                                    <span class="text-[0.55rem] text-primary font-black uppercase tracking-[0.15em] mt-3 px-3 py-1 bg-primary/10 rounded-full">Global Benchmark</span>
+                                </div>
+                                <div class="col-span-6 md:col-span-4 p-8 text-center flex items-center justify-center grayscale opacity-60">
+                                    <span class="text-2xl font-light text-gray-500 dark:text-gray-400 tracking-tighter">~75%</span>
+                                </div>
+                            </div>
+
+                            <!-- Row: Learning Path -->
+                            <div class="grid grid-cols-12 group transition-all duration-500 hover:bg-gray-50/50 dark:hover:bg-white/[0.01]">
+                                <div class="col-span-12 md:col-span-4 p-8 flex items-center gap-4 md:gap-6 border-b md:border-b-0 border-gray-50 dark:border-white/[0.04]">
+                                    <div class="w-12 h-12 rounded-2xl bg-primary/10 dark:bg-primary/5 flex items-center justify-center text-primary shadow-inner group-hover:scale-105 transition-transform">
+                                        <span class="material-icons-outlined text-2xl">terminal</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-lg md:text-xl font-bold text-gray-950 dark:text-white tracking-tight">E-Learning</p>
+                                        <p class="text-[0.6rem] text-gray-400 dark:text-gray-500 font-medium uppercase tracking-widest mt-0.5">Adaptive Tech</p>
+                                    </div>
+                                </div>
+                                <div class="col-span-6 md:col-span-4 p-8 text-center bg-primary/[0.02] dark:bg-primary/[0.04] border-x border-gray-100 dark:border-white/[0.04] flex flex-col items-center justify-center">
+                                    <p class="text-lg md:text-xl font-bold text-gray-950 dark:text-white">Hybrid Edge</p>
+                                    <p class="text-[0.55rem] text-gray-400 font-bold uppercase tracking-[0.15em] mt-2">Personal Mentoring</p>
+                                </div>
+                                <div class="col-span-6 md:col-span-4 p-8 text-center flex items-center justify-center grayscale opacity-60">
+                                    <p class="text-base font-light text-gray-500 dark:text-gray-400">Recorded Only</p>
+                                </div>
+                            </div>
+
+                            <!-- Row: Visa Logic -->
+                            <div class="grid grid-cols-12 group transition-all duration-500 hover:bg-gray-50/50 dark:hover:bg-white/[0.01]">
+                                <div class="col-span-12 md:col-span-4 p-8 flex items-center gap-4 md:gap-6 border-b md:border-b-0 border-gray-50 dark:border-white/[0.04]">
+                                    <div class="w-12 h-12 rounded-2xl bg-primary/10 dark:bg-primary/5 flex items-center justify-center text-primary shadow-inner group-hover:scale-105 transition-transform">
+                                        <span class="material-icons-outlined text-2xl">approval</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-lg md:text-xl font-bold text-gray-950 dark:text-white tracking-tight">Visa Hub</p>
+                                        <p class="text-[0.6rem] text-gray-400 dark:text-gray-500 font-medium uppercase tracking-widest mt-0.5">End-to-End Filing</p>
+                                    </div>
+                                </div>
+                                <div class="col-span-6 md:col-span-4 p-8 text-center bg-primary/[0.02] dark:bg-primary/[0.04] border-x border-gray-100 dark:border-white/[0.04] flex flex-col items-center justify-center">
+                                    <p class="text-lg md:text-xl font-bold text-gray-950 dark:text-white">Full In-House</p>
+                                    <span class="text-[0.55rem] text-primary font-black uppercase tracking-[0.15em] mt-2 px-3 py-1 bg-primary/10 rounded-full">Included</span>
+                                </div>
+                                <div class="col-span-6 md:col-span-4 p-8 text-center flex flex-col items-center justify-center grayscale opacity-60">
+                                    <p class="text-base font-light text-gray-500 dark:text-gray-400">Outsourced</p>
+                                    <span class="text-[0.5rem] font-bold text-red-500/70 uppercase tracking-widest mt-1">Hidden Fees</span>
+                                </div>
+                            </div>
+
+                            <!-- Row: Mastery Tests -->
+                            <div class="grid grid-cols-12 group transition-all duration-500 hover:bg-gray-50/50 dark:hover:bg-white/[0.01]">
+                                <div class="col-span-12 md:col-span-4 p-8 flex items-center gap-4 md:gap-6 border-b md:border-b-0 border-gray-50 dark:border-white/[0.04]">
+                                    <div class="w-12 h-12 rounded-2xl bg-primary/10 dark:bg-primary/5 flex items-center justify-center text-primary shadow-inner group-hover:scale-105 transition-transform">
+                                        <span class="material-icons-outlined text-2xl">psychology</span>
+                                    </div>
+                                    <div>
+                                        <p class="text-lg md:text-xl font-bold text-gray-950 dark:text-white tracking-tight">Support Assistance</p>
+                                        <p class="text-[0.6rem] text-gray-400 dark:text-gray-500 font-medium uppercase tracking-widest mt-0.5">Global Expert Access</p>
+                                    </div>
+                                </div>
+                                <div class="col-span-6 md:col-span-4 p-8 text-center bg-primary/[0.02] dark:bg-primary/[0.04] border-x border-gray-100 dark:border-white/[0.04] flex flex-col items-center justify-center">
+                                    <p class="text-lg md:text-xl font-bold text-gray-950 dark:text-white">Instant Response</p>
+                                    <p class="text-[0.55rem] text-gray-400 font-bold uppercase tracking-[0.15em] mt-2">24/7 Priority Support</p>
+                                </div>
+                                <div class="col-span-6 md:col-span-4 p-8 text-center flex items-center justify-center grayscale opacity-60">
+                                    <p class="text-base font-light text-gray-500 dark:text-gray-400">Limited Sets</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Balanced Accreditation Strip -->
+                    <!-- <div class="mt-16 px-8 py-10 rounded-[2.5rem] bg-gray-50/50 dark:bg-white/[0.01] border border-gray-100 dark:border-white/[0.03] flex flex-col md:flex-row justify-between items-center gap-8 grayscale opacity-60 hover:grayscale-0 hover:opacity-100 transition-all duration-500" data-aos="fade-up">
+                        <div class="flex flex-col items-center md:items-start text-center md:text-left">
+                            <span class="text-[0.6rem] font-black uppercase tracking-[0.3em] text-primary mb-2">Institutional Trust</span>
+                            <h5 class="text-xl font-bold text-gray-950 dark:text-white tracking-tight mb-1">Global Industry Validation</h5>
+                            <p class="text-xs text-gray-400">Endorsed by leading healthcare recruitment councils.</p>
+                        </div>
+                        <div class="flex items-center gap-10 flex-wrap justify-center opacity-70">
+                            <span class="text-xl font-black font-display text-gray-800 dark:text-gray-200">NHS</span>
+                            <span class="text-xl font-black font-display text-gray-800 dark:text-gray-200">AHPRA</span>
+                            <span class="text-xl font-black font-display text-gray-800 dark:text-gray-200">CGFNS</span>
+                            <span class="text-xl font-black font-display text-gray-800 dark:text-gray-200">NMC UK</span>
+                        </div>
+                    </div> -->
+                </div>
+            </div>
+        </section>
+
+        <!-- LATEST INSIGHTS SECTION -->
+        <section class="py-24 bg-white dark:bg-background-dark transition-colors duration-300 overflow-hidden">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-6">
+                    <div class="max-w-2xl" data-aos="fade-right">
+                        <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-black text-gray-950 dark:text-white mb-6 tracking-tighter leading-[1.1]">
+                            Latest <span class="text-primary">Blogs</span>
+                        </h2>
+                        <p class="text-gray-600 dark:text-gray-400 text-lg font-light leading-relaxed">
+                            Stay updated with the latest news, expert guides, and success strategies for your international nursing career.
+                        </p>
+                    </div>
+                    <div data-aos="fade-left">
+                        <a href="blog.html" class="group flex items-center gap-2 text-primary font-bold text-lg hover:gap-4 transition-all duration-300">
+                            Explore All Articles 
+                            <span class="material-icons-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-10">
+                    <!-- Blog Card 1 -->
+                    <article class="group relative flex flex-col bg-white dark:bg-surface-dark rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-gray-100 dark:border-white/5" data-aos="fade-up">
+                        <div class="relative overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1434030216411-0bb7c3f3dfad?auto=format&fit=crop&q=80&w=800" alt="NCLEX Guide" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <span class="absolute top-6 left-6 bg-primary text-white text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full shadow-lg">Guide</span>
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col">
+                            <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
+                                <span class="flex items-center gap-1"><span class="material-icons-outlined text-sm">calendar_today</span> Oct 12, 2025</span>
+                                <span class="flex items-center gap-1"><span class="material-icons-outlined text-sm">schedule</span> 5 min read</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white leading-tight mb-4 group-hover:text-primary transition-colors">
+                                5 Steps to Clear NCLEX in First Attempt
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-8 line-clamp-3">
+                                Mastering the NCLEX-RN requires a strategic approach. We break down the essential steps from content mastery to mindset preparation...
+                            </p>
+                            <div class="mt-auto">
+                                <a href="#" class="inline-flex items-center gap-2 text-gray-900 dark:text-white font-bold hover:text-primary dark:hover:text-primary transition-colors">
+                                    Read Article <span class="material-icons-outlined text-sm">east</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Card 2 -->
+                    <article class="group relative flex flex-col bg-white dark:bg-surface-dark rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-gray-100 dark:border-white/5" data-aos="fade-up" data-aos-delay="100">
+                        <div class="relative overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1519494026892-80bbd2d6fd0d?auto=format&fit=crop&q=80&w=800" alt="UK NHS News" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <span class="absolute top-6 left-6 bg-cyan-500 text-white text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full shadow-lg">News</span>
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col">
+                            <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
+                                <span class="flex items-center gap-1"><span class="material-icons-outlined text-sm">calendar_today</span> Oct 08, 2025</span>
+                                <span class="flex items-center gap-1"><span class="material-icons-outlined text-sm">schedule</span> 4 min read</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white leading-tight mb-4 group-hover:text-primary transition-colors">
+                                UK NHS Openings 2026: What to Expect
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-8 line-clamp-3">
+                                The UK healthcare sector is evolving. Discover the new visa regulations and the high-demand specialties for the upcoming recruitment cycle...
+                            </p>
+                            <div class="mt-auto">
+                                <a href="#" class="inline-flex items-center gap-2 text-gray-900 dark:text-white font-bold hover:text-primary dark:hover:text-primary transition-colors">
+                                    Read Article <span class="material-icons-outlined text-sm">east</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <!-- Blog Card 3 -->
+                    <article class="group relative flex flex-col bg-white dark:bg-surface-dark rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl hover:-translate-y-2 transition-all duration-500 border border-gray-100 dark:border-white/5" data-aos="fade-up" data-aos-delay="200">
+                        <div class="relative overflow-hidden h-64">
+                            <img src="https://images.unsplash.com/photo-1516321497487-e288fb19713f?auto=format&fit=crop&q=80&w=800" alt="OET vs IELTS" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110">
+                            <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                            <span class="absolute top-6 left-6 bg-indigo-500 text-white text-xs font-bold uppercase tracking-wider px-4 py-1.5 rounded-full shadow-lg">Tips</span>
+                        </div>
+                        <div class="p-8 flex-grow flex flex-col">
+                            <div class="flex items-center gap-4 text-sm text-gray-500 dark:text-gray-400 mb-4">
+                                <span class="flex items-center gap-1"><span class="material-icons-outlined text-sm">calendar_today</span> Oct 05, 2025</span>
+                                <span class="flex items-center gap-1"><span class="material-icons-outlined text-sm">schedule</span> 7 min read</span>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 dark:text-white leading-tight mb-4 group-hover:text-primary transition-colors">
+                                OET vs IELTS: Which is Easier for Nurses?
+                            </h3>
+                            <p class="text-gray-600 dark:text-gray-400 mb-8 line-clamp-3">
+                                Choosing the right English proficiency test can make or break your application. We compare the difficulty, format, and acceptance of both...
+                            </p>
+                            <div class="mt-auto">
+                                <a href="#" class="inline-flex items-center gap-2 text-gray-900 dark:text-white font-bold hover:text-primary dark:hover:text-primary transition-colors">
+                                    Read Article <span class="material-icons-outlined text-sm">east</span>
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- FAQ SECTION -->
+        <section class="py-24 bg-gray-50 dark:bg-background-dark transition-colors duration-300 overflow-hidden relative">
+            <!-- Decoration side element -->
+            <div class="absolute -right-24 top-1/4 w-96 h-96 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-24 bottom-1/4 w-96 h-96 bg-cyan-500/5 rounded-full blur-3xl pointer-events-none"></div>
+
+            <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="text-center max-w-2xl mx-auto mb-16" data-aos="fade-up">
+                    <span class="text-primary font-bold text-[0.65rem] uppercase tracking-[0.4em] mb-4 block">Help Center</span>
+                    <h2 class="text-4xl md:text-5xl lg:text-6xl font-display font-black text-gray-950 dark:text-white mb-6 tracking-tighter leading-[1.1]">
+                        Common <span class="text-gradient">Questions</span>
+                    </h2>
+                    <p class="text-gray-600 dark:text-gray-400 text-lg font-light leading-relaxed">
+                        Everything you need to know about our programs and the relocation process.
+                    </p>
+                </div>
+
+                <div class="space-y-4">
+                    <!-- FAQ Item 1: Licensing -->
+                    <div class="group border border-gray-200 dark:border-white/10 rounded-2xl bg-white dark:bg-surface-dark transition-all duration-300 hover:shadow-xl hover:shadow-primary/5 active-faq" data-aos="fade-up">
+                        <button class="w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none" onclick="toggleFAQ(this)">
+                            <span class="text-lg md:text-xl font-bold text-gray-950 dark:text-white group-hover:text-primary transition-colors tracking-tight">How does the UAE licensing process work?</span>
+                            <div class="w-10 h-10 rounded-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-primary transition-all duration-300 faq-icon">
+                                <span class="material-icons-outlined">expand_more</span>
+                            </div>
+                        </button>
+                        <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out faq-content">
+                            <div class="px-8 pb-8 text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-50 dark:border-white/5 pt-4">
+                                We manage the entire end-to-end licensing journey for DHA (Dubai), HAAD (Abu Dhabi), and MOH. This includes credential evaluation, DataFlow verification, primary source verification (PSV), and exam scheduling, so you can focus entirely on your preparation.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2: Training -->
+                    <div class="group border border-gray-200 dark:border-white/10 rounded-2xl bg-white dark:bg-surface-dark transition-all duration-300 hover:shadow-xl hover:shadow-primary/5" data-aos="fade-up" data-aos-delay="100">
+                        <button class="w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none" onclick="toggleFAQ(this)">
+                            <span class="text-lg md:text-xl font-bold text-gray-950 dark:text-white group-hover:text-primary transition-colors tracking-tight">What kind of exam training do you offer?</span>
+                            <div class="w-10 h-10 rounded-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-primary transition-all duration-300 faq-icon">
+                                <span class="material-icons-outlined">expand_more</span>
+                            </div>
+                        </button>
+                        <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out faq-content">
+                            <div class="px-8 pb-8 text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-50 dark:border-white/5 pt-4">
+                                We provide expert-led online classes specifically tailored for UAE Prometric exams. Our program features live interactive sessions, high-yield study modules, and unlimited mock tests that mirror the latest exam patterns.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3: Job Assistance -->
+                    <div class="group border border-gray-200 dark:border-white/10 rounded-2xl bg-white dark:bg-surface-dark transition-all duration-300 hover:shadow-xl hover:shadow-primary/5" data-aos="fade-up" data-aos-delay="200">
+                        <button class="w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none" onclick="toggleFAQ(this)">
+                            <span class="text-lg md:text-xl font-bold text-gray-950 dark:text-white group-hover:text-primary transition-colors tracking-tight">Do you assist with job placement in Dubai?</span>
+                            <div class="w-10 h-10 rounded-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-primary transition-all duration-300 faq-icon">
+                                <span class="material-icons-outlined">expand_more</span>
+                            </div>
+                        </button>
+                        <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out faq-content">
+                            <div class="px-8 pb-8 text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-50 dark:border-white/5 pt-4">
+                                Yes, we have strong partnerships with premier healthcare groups across the UAE. We support you with professional CV building, interview coaching, and direct recruitment links to help you secure a position in top Dubai hospitals.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4: Support -->
+                    <div class="group border border-gray-200 dark:border-white/10 rounded-2xl bg-white dark:bg-surface-dark transition-all duration-300 hover:shadow-xl hover:shadow-primary/5" data-aos="fade-up" data-aos-delay="300">
+                        <button class="w-full px-8 py-6 text-left flex justify-between items-center focus:outline-none" onclick="toggleFAQ(this)">
+                            <span class="text-lg md:text-xl font-bold text-gray-950 dark:text-white group-hover:text-primary transition-colors tracking-tight">Is the 24/7 support really available?</span>
+                            <div class="w-10 h-10 rounded-full bg-gray-50 dark:bg-gray-800 flex items-center justify-center text-primary transition-all duration-300 faq-icon">
+                                <span class="material-icons-outlined">expand_more</span>
+                            </div>
+                        </button>
+                        <div class="max-h-0 overflow-hidden transition-all duration-300 ease-in-out faq-content">
+                            <div class="px-8 pb-8 text-gray-600 dark:text-gray-400 leading-relaxed border-t border-gray-50 dark:border-white/5 pt-4">
+                                Absolutely. We provide round-the-clock priority support to all our candidates. Whether you have an academic query at midnight or need urgent assistance with your licensing documentation, our experts are just a message away.
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- FAQ Footer CTA -->
+                <div class="mt-16 bg-primary/5 dark:bg-primary/10 rounded-3xl p-8 text-center border border-primary/10" data-aos="zoom-in">
+                    <h4 class="text-xl font-bold text-gray-900 dark:text-white mb-2">Still have questions?</h4>
+                    <p class="text-gray-600 dark:text-gray-400 mb-6">Our experts are ready to help you plan your career.</p>
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                        <a href="https://wa.me/919624513738" target="_blank" class="flex items-center justify-center px-8 py-4 rounded-full bg-[#25D366] hover:bg-[#128C7E] text-white font-bold text-lg shadow-lg hover:shadow-xl hover:-translate-y-1 transition-all">
+                            WhatsApp
+                            <svg class="w-6 h-6 ml-2" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
+                            </svg>
+                        </a>
+                        <a href="#inquiry" class="flex items-center justify-center px-8 py-4 rounded-full bg-white dark:bg-white/10 text-gray-900 dark:text-white font-bold text-lg hover:bg-gray-100 dark:hover:bg-white/20 transition-all group">
+                            Inquiry Now
+                            <span class="material-icons-outlined ml-2 text-primary group-hover:translate-x-1 transition-transform">arrow_forward</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA SECTION -->
+        <section class="relative py-24 overflow-hidden" id="inquiry">
+            <!-- Background with gradient and pattern -->
+            <div class="absolute inset-0 bg-white dark:bg-gray-900 transition-colors duration-300">
+                <div class="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/10 dark:from-gray-900 dark:via-gray-800 dark:to-primary/20 opacity-90"></div>
+                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-5 dark:opacity-10"></div>
+            </div>
+            
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+                <div class="bg-primary rounded-3xl p-1 md:p-2 shadow-2xl overflow-hidden" data-aos="fade-up">
+                    <div class="bg-white dark:bg-gray-900 rounded-2xl overflow-hidden grid lg:grid-cols-2 transition-colors duration-300">
+                        <!-- Content Side -->
+                        <div class="p-10 md:p-14 flex flex-col justify-center relative">
+                            <!-- Decor -->
+                            <div class="absolute top-0 left-0 w-32 h-32 bg-primary/10 rounded-full blur-3xl -ml-16 -mt-16"></div>
+                            
+                            <h2 class="text-4xl md:text-5xl lg:text-5xl font-display font-black text-gray-950 dark:text-white mb-8 tracking-tighter leading-[1.1]">
+                                Expert Guidance for <br/><span class="text-primary">Global Success</span>
+                            </h2>
+                            <p class="text-gray-600 dark:text-gray-400 text-lg mb-8 leading-relaxed">
+                                Confused about the process? Our career counselors have helped 300+ healthcare professionals in Dubai relocate. Get your personalized roadmap today.
+                            </p>
+                            
+                            <div class="space-y-4 mb-8">
+                                <div class="flex items-center gap-4 text-gray-800 dark:text-white">
+                                    <div class="w-12 h-12 rounded-full bg-primary/5 dark:bg-white/5 flex items-center justify-center border border-primary/10 dark:border-white/10 text-primary">
+                                        <span class="material-icons-outlined">workspace_premium</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold">Free Profile Evaluation</h4>
+                                        <p class="text-xs text-gray-500 text-secondary">Worth $100</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center gap-4 text-gray-800 dark:text-white">
+                                    <div class="w-12 h-12 rounded-full bg-primary/5 dark:bg-white/5 flex items-center justify-center border border-primary/10 dark:border-white/10 text-primary">
+                                        <span class="material-icons-outlined">verified</span>
+                                    </div>
+                                    <div>
+                                        <h4 class="font-bold">Visa & Documentation Support</h4>
+                                        <p class="text-xs text-gray-500 text-secondary">Zero Error Guarantee</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Form Side -->
+                        <div class="bg-gray-50 dark:bg-gray-800/50 p-10 md:p-14 border-l border-gray-100 dark:border-gray-700/50 backdrop-blur-sm transition-colors duration-300">
+                            <form class="space-y-5">
+                                <h3 class="text-xl font-bold text-gray-900 dark:text-white mb-6">Book Your Free Consultation</h3>
+                                
+                                <div class="space-y-4">
+                                    <div>
+                                        <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Full Name</label>
+                                        <input type="text" class="w-full bg-white dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder-gray-400 dark:placeholder-gray-600" placeholder="John Doe">
+                                    </div>
+                                    
+                                    <div class="grid grid-cols-2 gap-4">
+                                        <div>
+                                            <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Email</label>
+                                            <input type="email" class="w-full bg-white dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder-gray-400 dark:placeholder-gray-600" placeholder="john@example.com">
+                                        </div>
+                                        <div>
+                                            <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Phone</label>
+                                            <input type="tel" class="w-full bg-white dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all placeholder-gray-400 dark:placeholder-gray-600" placeholder="+91 98765 43210">
+                                        </div>
+                                    </div>
+
+                                    <div>
+                                        <label class="block text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wider mb-2">Interested Exam</label>
+                                        <select class="w-full bg-white dark:bg-gray-900/50 border border-gray-200 dark:border-gray-700 rounded-xl px-4 py-3 text-gray-900 dark:text-white focus:border-primary focus:ring-1 focus:ring-primary outline-none transition-all">
+                                            <option class="bg-white dark:bg-gray-900">DHA (Dubai Health Authority)</option>
+                                            <option class="bg-white dark:bg-gray-900">HAAD / DOH (Abu Dhabi)</option>
+                                            <option class="bg-white dark:bg-gray-900">MOH (Ministry of Health - UAE)</option>
+                                            <option class="bg-white dark:bg-gray-900">Consulting</option>
+                                            <option class="bg-white dark:bg-gray-900">Other</option>
+                                        </select>
+                                    </div>
+                                </div>
+
+                                <button class="w-full bg-primary hover:bg-primary-dark hover:scale-[1.02] text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/25 transition-all duration-300 mt-4 flex items-center justify-center gap-2">
+                                    Request Callback <span class="material-icons-outlined text-lg">call_made</span>
+                                </button>
+                                
+                                <p class="text-center text-xs text-gray-500 mt-4">
+                                    By clicking, you agree to our <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-primary underline">Terms</a> & <a href="#" class="text-gray-500 dark:text-gray-400 hover:text-primary underline">Privacy Policy</a>.
+                                </p>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- GLOBAL IMPACT STATS -->
+        <section class="py-16 bg-white dark:bg-gray-900 border-t border-gray-100 dark:border-white/5 transition-colors duration-300">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12">
+                    
+                    <!-- Stat 1 -->
+                    <div class="text-center group" data-aos="fade-up">
+                        <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <span class="material-icons-outlined text-3xl">groups</span>
+                        </div>
+                        <div class="text-4xl md:text-5xl font-display font-black text-gray-950 dark:text-white mb-2 tracking-tighter">300+</div>
+                        <div class="text-[0.6rem] uppercase tracking-widest text-gray-500 dark:text-gray-400 font-bold">Healthcare Professionals Relocated</div>
+                    </div>
+
+                    <!-- Stat 2 -->
+                    <div class="text-center group" data-aos="fade-up" data-aos-delay="100">
+                        <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <span class="material-icons-outlined text-3xl">headset_mic</span>
+                        </div>
+                        <div class="text-4xl md:text-5xl font-display font-black text-gray-950 dark:text-white mb-2 tracking-tighter">24/7</div>
+                        <div class="text-[0.6rem] uppercase tracking-widest text-gray-500 dark:text-gray-400 font-bold">Support Assistance</div>
+                    </div>
+
+                    <!-- Stat 3 -->
+                    <div class="text-center group" data-aos="fade-up" data-aos-delay="200">
+                        <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <span class="material-icons-outlined text-3xl">verified</span>
+                        </div>
+                        <div class="text-4xl md:text-5xl font-display font-black text-gray-950 dark:text-white mb-2 tracking-tighter">98%</div>
+                        <div class="text-[0.6rem] uppercase tracking-widest text-gray-500 dark:text-gray-400 font-bold">Visa Success Rate</div>
+                    </div>
+
+                    <!-- Stat 4 -->
+                    <div class="text-center group" data-aos="fade-up" data-aos-delay="300">
+                        <div class="inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 text-primary mb-6 group-hover:scale-110 transition-transform duration-300">
+                            <span class="material-icons-outlined text-3xl">star_rate</span>
+                        </div>
+                        <div class="text-4xl md:text-5xl font-display font-black text-gray-950 dark:text-white mb-2 tracking-tighter">5+</div>
+                        <div class="text-[0.6rem] uppercase tracking-widest text-gray-500 dark:text-gray-400 font-bold">Years Experience</div>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- PROFESSIONAL FOOTER -->
+    <footer class="bg-white dark:bg-background-dark border-t border-gray-100 dark:border-white/5 relative overflow-hidden transition-colors duration-300">
+        <!-- Watermark -->
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 text-[12rem] md:text-[20rem] font-bold text-primary/[0.05] dark:text-primary/[0.03] pointer-events-none whitespace-nowrap select-none font-display transition-colors duration-300">
+            WORKAWAY
+        </div>
+    
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <!-- Newsletter Strip -->
+            <!-- <div class="py-16 border-b border-gray-100 dark:border-white/5 flex flex-col md:flex-row justify-between items-center gap-8">
+                <div class="text-center md:text-left">
+                    <h3 class="text-2xl font-display font-bold text-gray-900 dark:text-white mb-2">Join 300+ Professionals</h3>
+                    <p class="text-gray-500 dark:text-gray-400">Get the latest UAE licensing updates, exam tips, and job alerts.</p>
+                </div>
+                <form class="flex w-full md:w-auto gap-3">
+                    <input type="email" placeholder="Enter your email address" class="bg-gray-50 dark:bg-surface-dark border border-gray-200 dark:border-white/10 rounded-lg px-6 py-4 text-gray-900 dark:text-white focus:ring-1 focus:ring-primary focus:border-primary outline-none w-full md:w-80 placeholder-gray-400 dark:placeholder-gray-500 transition-all">
+                    <button class="bg-primary hover:bg-primary-dark text-white font-bold px-8 py-4 rounded-lg transition-colors shadow-[0_0_20px_rgba(77,208,225,0.2)] hover:shadow-[0_0_30px_rgba(77,208,225,0.4)]">
+                        Subscribe
+                    </button>
+                </form>
+            </div> -->
+    
+            <!-- Main Content -->
+            <div class="py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 border-b border-gray-100 dark:border-white/5">
+                
+                <!-- Brand -->
+                <div class="lg:col-span-4">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 rounded-full overflow-hidden flex items-center justify-center shadow-md shrink-0" style="background: linear-gradient(135deg, #1CD1D1 50%, #475569 50%);">
+                            <span class="material-icons-outlined text-white text-2xl" style="transform: rotate(45deg);">flight</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-display font-black text-3xl tracking-tighter leading-none">
+                                <span class="text-[#1CD1D1]">work</span><span class="text-[#475569] dark:text-gray-100">away</span>
+                            </span>
+                            <span class="text-[0.6rem] uppercase tracking-[0.25em] text-[#475569] dark:text-gray-400 font-bold mt-1">Make Life Better</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-8 max-w-sm">
+                        The world is waiting for you. We provide the wings to get you there through premier education and visa consultancy.
+                    </p>
+                    <div class="flex gap-4">
+                        <a href="#" class="group w-12 h-12 rounded-full bg-gray-100 dark:bg-surface-dark flex items-center justify-center transition-all hover:bg-primary hover:-translate-y-1">
+                            <svg class="h-5 w-5 text-gray-500 dark:text-gray-400 group-hover:text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z"></path></svg>
+                        </a>
+                        <a href="#" class="group w-12 h-12 rounded-full bg-gray-100 dark:bg-surface-dark flex items-center justify-center transition-all hover:bg-primary hover:-translate-y-1">
+                            <svg class="h-5 w-5 text-gray-500 dark:text-gray-400 group-hover:text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.153 1.772c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.468 2.373c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058z"></path></svg>
+                        </a>
+                        <a href="#" class="group w-12 h-12 rounded-full bg-gray-200 dark:bg-surface-dark flex items-center justify-center transition-all hover:bg-primary hover:-translate-y-1">
+                            <svg class="h-5 w-5 text-gray-500 dark:text-gray-400 group-hover:text-white" fill="currentColor" viewBox="0 0 24 24"><path d="M23.953 4.57a10 10 0 01-2.825.775 4.958 4.958 0 002.163-2.723c-.951.555-2.005.959-3.127 1.184a4.92 4.92 0 00-8.384 4.482C7.69 8.095 4.067 6.13 1.64 3.162a4.822 4.822 0 00-.666 2.475c0 1.71.87 3.213 2.188 4.096a4.904 4.904 0 01-2.228-.616v.06a4.923 4.923 0 003.946 4.827 4.996 4.996 0 01-2.212.085 4.936 4.936 0 004.604 3.417 9.867 9.867 0 01-6.102 2.105c-.39 0-.779-.023-1.17-.067a13.995 13.995 0 007.557 2.209c9.053 0 13.998-7.496 13.998-13.985 0-.21 0-.42-.015-.63A9.935 9.935 0 0024 4.59z"></path></svg>
+                        </a>
+                    </div>
+                </div>
+    
+                <!-- Links -->
+                <div class="lg:col-span-2 text-sm">
+                    <h4 class="text-gray-900 dark:text-white font-bold mb-8 uppercase tracking-wider">Programs</h4>
+                    <ul class="space-y-4 font-medium">
+                        <li><a href="#" class="text-gray-500 hover:text-primary transition-colors block hover:translate-x-1 duration-300">DHA (Dubai)</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-primary transition-colors block hover:translate-x-1 duration-300">HAAD (Abu Dhabi)</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-primary transition-colors block hover:translate-x-1 duration-300">MOH (UAE)</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-primary transition-colors block hover:translate-x-1 duration-300">Prometric Prep</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-primary transition-colors block hover:translate-x-1 duration-300">Document Hub</a></li>
+                    </ul>
+                </div>
+    
+                <div class="lg:col-span-2 text-sm">
+                    <h4 class="text-gray-900 dark:text-white font-bold mb-8 uppercase tracking-wider">Company</h4>
+                    <ul class="space-y-4">
+                        <li><a href="about.html" class="text-gray-400 hover:text-primary transition-colors block hover:translate-x-1 duration-300">About Us</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors block hover:translate-x-1 duration-300">Success Stories</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-primary transition-colors block hover:translate-x-1 duration-300">Our Blog</a></li>
+                        <li><a href="career.html" class="text-gray-400 hover:text-primary transition-colors block hover:translate-x-1 duration-300">Work With Us</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-primary transition-colors block hover:translate-x-1 duration-300">Contact Support</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-primary transition-colors block hover:translate-x-1 duration-300">Verify Certificate</a></li>
+                    </ul>
+                </div>
+    
+                <!-- Contact info -->
+                <div class="lg:col-span-4">
+                    <h4 class="text-gray-900 dark:text-white font-bold mb-8 uppercase tracking-wider">Get in Touch</h4>
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4 group">
+                            <div class="w-10 h-10 rounded-lg bg-gray-100 dark:bg-surface-dark group-hover:bg-primary group-hover:text-white flex items-center justify-center shrink-0 text-gray-500 transition-colors">
+                                <span class="material-icons-outlined">place</span>
+                            </div>
+                            <div>
+                                <p class="text-gray-900 dark:text-white font-medium mb-1">Dubai Head Office</p>
+                                <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">13 Street 55, Al Karama, Dubai, UAE</p>
+                                <p class="text-primary font-bold text-sm">+971 56 155 3431</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4 group">
+                            <div class="w-10 h-10 rounded-lg bg-gray-100 dark:bg-surface-dark group-hover:bg-primary group-hover:text-white flex items-center justify-center shrink-0 text-gray-500 transition-colors">
+                                <span class="material-icons-outlined">place</span>
+                            </div>
+                            <div>
+                                <p class="text-gray-900 dark:text-white font-medium mb-1">India Branch Office</p>
+                                <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">1004, The Spire, Nr. Ayodhya Chowk, Rajkot, Gujarat, India</p>
+                                <p class="text-primary font-bold text-sm">+91 96245 13738</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4 group">
+                            <div class="w-10 h-10 rounded-lg bg-gray-100 dark:bg-surface-dark group-hover:bg-primary group-hover:text-white flex items-center justify-center shrink-0 text-gray-500 transition-colors">
+                                <span class="material-icons-outlined">mail</span>
+                            </div>
+                            <div>
+                                <p class="text-gray-900 dark:text-white font-medium mb-1">Email Support</p>
+                                <p class="text-gray-500 dark:text-gray-400 text-sm leading-relaxed">workaway2141@gmail.com</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+    
+            <!-- Copyright -->
+            <div class="py-8 flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-sm text-gray-500">
+                    © 2026 Work Away Education Pvt Ltd. All rights reserved.
+                </p>
+                <div class="flex gap-6 text-sm">
+                    <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">Privacy</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">Terms</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">Cookies</a>
+                    <a href="#" class="text-gray-500 hover:text-gray-900 dark:hover:text-white transition-colors">Sitemap</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script src="js/script.js"></script>
+    <script>AOS.init(); const btn = document.getElementById('mobile-menu-btn'); const menu = document.getElementById('mobile-menu-panel'); if(btn && menu){ btn.addEventListener('click', () => { menu.classList.toggle('hidden'); }); }</script>
+    <script>
+        function toggleFAQ(element) {
+            const content = element.nextElementSibling;
+            const icon = element.querySelector('.faq-icon');
+            const allItems = document.querySelectorAll('.faq-content');
+            const allIcons = document.querySelectorAll('.faq-icon');
+            
+            // Close others
+            allItems.forEach((item, index) => {
+                if (item !== content) {
+                    item.style.maxHeight = '0';
+                    allIcons[index].style.transform = 'rotate(0deg)';
+                }
+            });
+
+            // Toggle current
+            if (content.style.maxHeight && content.style.maxHeight !== '0px') {
+                content.style.maxHeight = '0';
+                icon.style.transform = 'rotate(0deg)';
+            } else {
+                content.style.maxHeight = content.scrollHeight + 'px';
+                icon.style.transform = 'rotate(180deg)';
+            }
+        }
+
+        // Open first FAQ by default on load
+        window.addEventListener('DOMContentLoaded', () => {
+            const firstButton = document.querySelector('.active-faq button');
+            if (firstButton) {
+                toggleFAQ(firstButton);
+            }
+        });
+    </script>
+</body>
+</html>
