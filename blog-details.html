@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>WorkAway - Blog Details</title>
+    <link href="https://fonts.googleapis.com/" rel="preconnect" />
+    <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect" />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Public+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Outlined" rel="stylesheet" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com/?plugins=forms,typography"></script>
+    <script src="js/tailwind.config.js"></script>
+    <link href="css/style.css" rel="stylesheet" />
+    <style>
+        .glass { background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.18); }
+        .dark .glass { background: rgba(31, 41, 55, 0.7); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .glass-card { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(20px); border: 1px solid rgba(255, 255, 255, 0.5); }
+        .dark .glass-card { background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .blob { position: absolute; width: 500px; height: 500px; background: linear-gradient(180deg, rgba(77, 208, 225, 0.4) 0%, rgba(84, 110, 122, 0.1) 100%); border-radius: 50%; filter: blur(80px); z-index: -1; opacity: 0.6; animation: move 25s infinite alternate; }
+        @keyframes move { from { transform: translate(0, 0) scale(1); } to { transform: translate(20px, -20px) scale(1.1); } }
+        .text-gradient { background-clip: text; -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-image: linear-gradient(to right, #1CD1D1, #26c6da); }
+        .prose img { border-radius: 1.5rem; box-shadow: 0 20px 50px rgba(0,0,0,0.1); }
+    </style>
+    <script>
+        function initTheme() {
+            if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+                document.documentElement.classList.add('dark');
+            } else {
+                document.documentElement.classList.remove('dark');
+            }
+        }
+        function toggleTheme() {
+            const html = document.documentElement;
+            if (html.classList.contains('dark')) {
+                html.classList.remove('dark');
+                localStorage.setItem('theme', 'light');
+            } else {
+                html.classList.add('dark');
+                localStorage.setItem('theme', 'dark');
+            }
+        }
+        initTheme();
+    </script>
+</head>
+
+<body class="bg-gray-50 dark:bg-background-dark text-text-light dark:text-text-dark font-body transition-colors duration-300">
+    <div class="fixed top-0 left-0 right-0 h-1 bg-gradient-to-r from-primary via-blue-400 to-secondary z-[60]"></div>
+    
+    <!-- NAVIGATION (Standardized) -->
+    <nav class="fixed w-full z-50 transition-all duration-300 glass shadow-sm" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center cursor-pointer" onclick="window.location.href='index.html'">
+                    <div class="relative w-11 h-11 rounded-full overflow-hidden mr-3 shadow-sm flex items-center justify-center" style="background: linear-gradient(135deg, #1CD1D1 50%, #475569 50%);">
+                        <span class="material-icons-outlined text-white text-2xl" style="transform: rotate(45deg);">flight</span>
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-display font-black text-2xl tracking-tighter leading-none">
+                            <span class="text-[#1CD1D1]">work</span><span class="text-[#475569] dark:text-white">away</span>
+                        </span>
+                        <span class="text-[0.55rem] uppercase tracking-[0.25em] text-[#475569] dark:text-gray-400 font-bold mt-1">Make Life Better</span>
+                    </div>
+                </div>
+                <div class="hidden md:flex items-center space-x-1">
+                    <a href="index.html" class="px-4 py-2 text-sm font-bold text-gray-500 hover:text-primary transition-colors">Home</a>
+                    <a href="services.html" class="px-4 py-2 text-sm font-bold text-gray-500 hover:text-primary transition-colors">Services</a>
+                    <a href="blog.html" class="px-5 py-2 text-sm font-bold text-primary rounded-full bg-primary/10 transition-colors">Blog</a>
+                    <a href="career.html" class="px-4 py-2 text-sm font-bold text-gray-500 hover:text-primary transition-colors">Career</a>
+                    <a href="about.html" class="px-4 py-2 text-sm font-bold text-gray-500 hover:text-primary transition-colors">About</a>
+                    <a href="contact.html" class="px-4 py-2 text-sm font-bold text-gray-500 hover:text-primary transition-colors">Contact</a>
+                </div>
+                <div class="hidden md:flex items-center gap-4">
+                    <button onclick="toggleTheme()" class="p-2 rounded-full text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-700 transition-all focus:outline-none">
+                        <span class="material-icons-outlined dark:hidden">dark_mode</span>
+                        <span class="material-icons-outlined hidden dark:inline text-yellow-300">light_mode</span>
+                    </button>
+                    <a href="https://wa.me/919624513738" target="_blank" class="p-2.5 rounded-full bg-[#25D366] text-white hover:bg-[#128C7E] shadow-lg shadow-green-500/20 hover:shadow-green-500/40 hover:-translate-y-0.5 transition-all flex items-center justify-center">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
+                        </svg>
+                    </a>
+                    <a href="contact.html#inquiry" class="px-8 py-2.5 rounded-full bg-[#1CD1D1] text-white text-sm font-bold shadow-lg shadow-[#1CD1D1]/40 hover:-translate-y-0.5 transition-all">Inquiry</a>
+                </div>
+                <div class="md:hidden flex items-center">
+                    <button class="p-2 rounded-md text-gray-600 dark:text-gray-200" id="mobile-menu-btn"><span class="material-icons-outlined text-2xl">menu</span></button>
+                </div>
+            </div>
+        </div>
+        <div class="md:hidden hidden bg-white dark:bg-surface-dark border-t border-gray-100 dark:border-gray-800" id="mobile-menu-panel">
+            <div class="px-4 pt-4 pb-6 space-y-2">
+                <a href="index.html" class="block px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 font-medium hover:bg-gray-50 dark:hover:bg-gray-800">Home</a>
+                <a href="services.html" class="block px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 font-medium hover:bg-gray-50 dark:hover:bg-gray-800">Services</a>
+                <a href="blog.html" class="block px-4 py-3 rounded-lg bg-primary/10 text-primary font-bold">Blog</a>
+                <a href="career.html" class="block px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 font-medium hover:bg-gray-50 dark:hover:bg-gray-800">Career</a>
+                <a href="about.html" class="block px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 font-medium hover:bg-gray-50 dark:hover:bg-gray-800">About</a>
+                <a href="contact.html" class="block px-4 py-3 rounded-lg text-gray-600 dark:text-gray-300 font-medium hover:bg-gray-50 dark:hover:bg-gray-800">Contact</a>
+                <a href="https://wa.me/919624513738" target="_blank" class="block px-4 py-3 rounded-lg bg-[#25D366] text-white font-bold text-center flex items-center justify-center gap-2">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413Z"></path>
+                    </svg>
+                    WhatsApp
+                </a>
+                <a href="contact.html#inquiry" class="block px-4 py-3 rounded-lg bg-primary text-white font-bold text-center">Inquiry</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- BLOG DETAILS CONTENT -->
+    <main class="pt-32 pb-24">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div id="blog-content">
+                <!-- Content will be injected here by JavaScript based on the ID -->
+                <div class="animate-pulse">
+                    <div class="h-96 bg-gray-200 dark:bg-gray-800 rounded-3xl mb-8"></div>
+                    <div class="h-10 bg-gray-200 dark:bg-gray-800 rounded-full w-3/4 mb-4"></div>
+                    <div class="h-4 bg-gray-200 dark:bg-gray-800 rounded-full w-1/2 mb-12"></div>
+                    <div class="space-y-4">
+                        <div class="h-4 bg-gray-200 dark:bg-gray-800 rounded-full w-full"></div>
+                        <div class="h-4 bg-gray-200 dark:bg-gray-800 rounded-full w-full"></div>
+                        <div class="h-4 bg-gray-200 dark:bg-gray-800 rounded-full w-3/4"></div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- PROFESSIONAL FOOTER -->
+    <footer class="bg-white dark:bg-background-dark border-t border-gray-100 dark:border-white/5 relative overflow-hidden transition-colors duration-300">
+        <div class="absolute top-0 left-1/2 -translate-x-1/2 text-[12rem] md:text-[20rem] font-bold text-primary/[0.05] dark:text-primary/[0.03] pointer-events-none whitespace-nowrap select-none font-display transition-colors duration-300">
+            WORKAWAY
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="py-20 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8 border-b border-gray-100 dark:border-white/5">
+                <div class="lg:col-span-4">
+                    <div class="flex items-center gap-4 mb-8">
+                        <div class="w-12 h-12 rounded-full overflow-hidden flex items-center justify-center shadow-md shrink-0" style="background: linear-gradient(135deg, #1CD1D1 50%, #475569 50%);">
+                            <span class="material-icons-outlined text-white text-2xl" style="transform: rotate(45deg);">flight</span>
+                        </div>
+                        <div class="flex flex-col">
+                            <span class="font-display font-black text-3xl tracking-tighter leading-none">
+                                <span class="text-[#1CD1D1]">work</span><span class="text-[#475569] dark:text-gray-100">away</span>
+                            </span>
+                            <span class="text-[0.6rem] uppercase tracking-[0.25em] text-[#475569] dark:text-gray-400 font-bold mt-1">Make Life Better</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-600 dark:text-gray-400 leading-relaxed mb-8 max-w-sm">The world is waiting for you. We provide the wings to get you there through premier education and visa consultancy.</p>
+                </div>
+                <div class="lg:col-span-2 text-sm">
+                    <h4 class="text-gray-900 dark:text-white font-bold mb-8 uppercase tracking-wider">Programs</h4>
+                    <ul class="space-y-4 font-medium">
+                        <li><a href="#" class="text-gray-500 hover:text-primary transition-colors block">DHA (Dubai)</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-primary transition-colors block">MOH (UAE)</a></li>
+                        <li><a href="#" class="text-gray-500 hover:text-primary transition-colors block">Prometric Prep</a></li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-2 text-sm">
+                    <h4 class="text-gray-900 dark:text-white font-bold mb-8 uppercase tracking-wider">Company</h4>
+                    <ul class="space-y-4">
+                        <li><a href="about.html" class="text-gray-400 hover:text-primary transition-colors block">About Us</a></li>
+                        <li><a href="blog.html" class="text-gray-400 hover:text-primary transition-colors block">Our Blog</a></li>
+                        <li><a href="contact.html" class="text-gray-400 hover:text-primary transition-colors block">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="lg:col-span-4">
+                    <h4 class="text-gray-900 dark:text-white font-bold mb-8 uppercase tracking-wider">Get in Touch</h4>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm mb-4">India: +91 96245 13738</p>
+                    <p class="text-gray-500 dark:text-gray-400 text-sm">Email: workaway2141@gmail.com</p>
+                </div>
+            </div>
+            <div class="py-8 flex flex-col md:flex-row justify-between items-center gap-4 text-sm text-gray-500">
+                <p>© 2026 Work Away Education Pvt Ltd. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 1000, once: true });
+        
+        const blogs = {
+            'overseas-healthcare': {
+                title: "Explore Overseas Healthcare Career from India to Dubai",
+                category: "Career Guidance",
+                date: "Feb 10, 2026",
+                readTime: "10 min read",
+                image: "https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=1200",
+                content: `
+                    <div class="prose dark:prose-invert prose-lg max-w-none">
+                        <p class="lead text-xl text-gray-600 dark:text-gray-400 mb-8">Dubai's healthcare landscape is evolving at an unprecedented pace, creating a massive demand for Indian healthcare professionals.</p>
+                        <p>For decades, healthcare professionals from India have looked towards the West for career growth. However, the tides are shifting. Dubai, with its world-class infrastructure, tax-free income, and proximity to India, has emerged as the premier destination for doctors, nurses, and allied health professionals.</p>
+                        
+                        <h2 class="text-3xl font-black text-gray-900 dark:text-white mt-12 mb-6">Why Choose Dubai?</h2>
+                        <ul class="space-y-4 mb-10">
+                            <li><strong>Tax-Free Salary:</strong> Take home 100% of your earnings.</li>
+                            <li><strong>Quality of Life:</strong> Dubai offers some of the best housing, education, and leisure facilities globally.</li>
+                            <li><strong>Proximity:</strong> Just a 3-hour flight from most major Indian cities.</li>
+                            <li><strong>Advanced Technology:</strong> Work with the latest medical equipment and protocols.</li>
+                        </ul>
+
+                        <img src="https://images.unsplash.com/photo-1512453979798-5ea266f8880c?auto=format&fit=crop&q=80&w=1200" alt="Dubai Cityscape" class="w-full h-96 object-cover my-12" />
+
+                        <h2 class="text-3xl font-black text-gray-900 dark:text-white mt-12 mb-6">The Journey from India to Dubai</h2>
+                        <p>Transitioning your career involves several critical steps. First is the licensing through DHA (Dubai Health Authority) or MOH (Ministry of Health). This involves credentialing, Dataflow verification (Primary Source Verification), and passing the Prometric exam.</p>
+                        <p>At WorkAway, we specialize in making this complex process seamless. We understand the nuances of the Indian education system and how it maps to UAE requirements, ensuring your application is approved the first time.</p>
+                        
+                        <div class="bg-primary/10 border-l-4 border-primary p-8 rounded-r-3xl my-12">
+                            <p class="text-gray-900 dark:text-white font-bold italic">"Moving to Dubai was the best decision for my family and career. WorkAway handled everything from my Dataflow to my final job placement." - Rahul S., Registered Nurse</p>
+                        </div>
+
+                        <h2 class="text-3xl font-black text-gray-900 dark:text-white mt-12 mb-6">Getting Started</h2>
+                        <p>The first step is a free profile assessment. We review your qualifications and experience to determine your eligibility for various UAE licenses. Once we have a clear path, our team begins the documentation process immediately.</p>
+                    </div>
+                `
+            },
+            'make-career': {
+                title: "Make your healthcare career in Dubai with WorkAway",
+                category: "Success Stories",
+                date: "Feb 9, 2026",
+                readTime: "8 min read",
+                image: "https://images.unsplash.com/photo-1532938911079-1b06ac7ceec7?auto=format&fit=crop&q=80&w=1200",
+                content: `
+                    <div class="prose dark:prose-invert prose-lg max-w-none">
+                        <p class="lead text-xl text-gray-600 dark:text-gray-400 mb-8">WorkAway isn't just a consultancy; we are your partners in success. Discover how we turn dreams into reality.</p>
+                        <p>Every year, thousands of healthcare professionals attempt to move to Dubai. Many get stuck in the complex web of documentation, licensing exams, and job searches. This is where WorkAway steps in.</p>
+                        
+                        <h2 class="text-3xl font-black text-gray-900 dark:text-white mt-12 mb-6">The WorkAway Advantage</h2>
+                        <p>Our methodology is built on 5 years of industry excellence. We don't just provide information; we provide results. Our end-to-end support model covers:</p>
+                        <ul class="space-y-4 mb-10">
+                            <li><strong>Document Hub:</strong> We assist with all legalizations and attestations.</li>
+                            <li><strong>Licensing:</strong> Expert guidance for DHA, HAAD, and MOH licenses.</li>
+                            <li><strong>Prep Academy:</strong> High-yield study materials and mock exams.</li>
+                            <li><strong>Recruitment:</strong> Direct connects with top-tier hospitals in Dubai.</li>
+                        </ul>
+
+                        <div class="grid grid-cols-2 gap-8 my-12">
+                            <img src="https://images.unsplash.com/photo-1454165833762-610402e8aef3?auto=format&fit=crop&q=80&w=600" alt="Consultation" class="rounded-3xl" />
+                            <img src="https://images.unsplash.com/photo-1516383274235-5f42d6c6426d?auto=format&fit=crop&q=80&w=600" alt="Success" class="rounded-3xl" />
+                        </div>
+
+                        <h2 class="text-3xl font-black text-gray-900 dark:text-white mt-12 mb-6">Our Success Rate</h2>
+                        <p>We boast a 95% success rate in licensing and 100% job placement for our enrolled students. Our motto, "Make Life Better," drives everything we do. We believe that by helping you find your dream job, we are contributing to a better global healthcare ecosystem.</p>
+                        
+                        <h2 class="text-3xl font-black text-gray-900 dark:text-white mt-12 mb-6">Join the WorkAway Family</h2>
+                        <p>When you choose WorkAway, you join a community of over 300 professionals who have successfully made the move. We provide cultural onboarding and post-landing support to ensure you settle into your new life in Dubai with ease.</p>
+                    </div>
+                `
+            },
+            'nurses-demand': {
+                title: "High-demand career for Nurses in Dubai with WorkAway",
+                category: "Nursing Guidance",
+                date: "Feb 8, 2026",
+                readTime: "12 min read",
+                image: "https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&q=80&w=1200",
+                content: `
+                    <div class="prose dark:prose-invert prose-lg max-w-none">
+                        <p class="lead text-xl text-gray-600 dark:text-gray-400 mb-8">Nurses are the backbone of any healthcare system. In Dubai, they are also among the most respected and well-compensated professionals.</p>
+                        <p>Dubai is experiencing a massive healthcare boom. New hospitals are opening every month, and existing ones are expanding. This has created an unprecedented demand for qualified nurses, especially those from India who are known for their dedication and skills.</p>
+                        
+                        <h2 class="text-3xl font-black text-gray-900 dark:text-white mt-12 mb-6">Top Nursing Specialties in Demand</h2>
+                        <div class="grid sm:grid-cols-2 gap-6 mb-10">
+                            <div class="p-6 bg-gray-50 dark:bg-white/5 rounded-2xl">
+                                <h4 class="font-bold text-primary mb-2">Critical Care (ICU)</h4>
+                                <p class="text-sm">High salaries for experienced ICU nurses in both government and private sectors.</p>
+                            </div>
+                            <div class="p-6 bg-gray-50 dark:bg-white/5 rounded-2xl">
+                                <h4 class="font-bold text-primary mb-2">Emergency (ER)</h4>
+                                <p class="text-sm">Fast-paced environments with excellent growth opportunities.</p>
+                            </div>
+                            <div class="p-6 bg-gray-50 dark:bg-white/5 rounded-2xl">
+                                <h4 class="font-bold text-primary mb-2">Pediatrics/NICU</h4>
+                                <p class="text-sm">Growing demand for specialized care in maternity and pediatric clinics.</p>
+                            </div>
+                            <div class="p-6 bg-gray-50 dark:bg-white/5 rounded-2xl">
+                                <h4 class="font-bold text-primary mb-2">Operation Theater (OT)</h4>
+                                <p class="text-sm">Highly technical roles with competitive tax-free benefits.</p>
+                            </div>
+                        </div>
+
+                        <img src="https://images.unsplash.com/photo-1551076805-e1869033e561?auto=format&fit=crop&q=80&w=1200" alt="Nurses in Dubai" class="w-full h-96 object-cover my-12" />
+
+                        <h2 class="text-3xl font-black text-gray-900 dark:text-white mt-12 mb-6">Financial Benefits for Nurses</h2>
+                        <p>In addition to tax-free salaries (ranging from 5,000 to 12,000 AED per month for staff nurses), many hospitals provide:</p>
+                        <ul class="space-y-4 mb-10">
+                            <li>Free Shared Accommodation or Housing Allowance.</li>
+                            <li>Annual Flight Tickets to your home country.</li>
+                            <li>Comprehensive Health Insurance.</li>
+                            <li>End of Service Gratuity.</li>
+                        </ul>
+                        
+                        <h2 class="text-3xl font-black text-gray-900 dark:text-white mt-12 mb-6">How WorkAway Helps</h2>
+                        <p>We provide specialized coaching for the DHA nursing exam. Our curriculum is designed by nurses who have already cleared the exam and are working in Dubai. We also help you prepare for interviews with top hospitals like Mediclinic, Aster, and Thumbay.</p>
+                    </div>
+                `
+            }
+        };
+
+        const params = new URLSearchParams(window.location.search);
+        const blogId = params.get('id');
+        const blog = blogs[blogId] || blogs['overseas-healthcare']; // Default to first blog if ID is invalid
+
+        if (blog) {
+            document.title = `${blog.title} - WorkAway`;
+            const container = document.getElementById('blog-content');
+            container.innerHTML = `
+                <div class="mb-12" data-aos="fade-up">
+                    <div class="inline-flex items-center gap-3 px-4 py-2 rounded-full glass-card border border-white/20 mb-8">
+                        <span class="text-xs font-bold uppercase tracking-wider text-primary">${blog.category}</span>
+                    </div>
+                    <h1 class="text-4xl md:text-6xl lg:text-7xl font-display font-black text-gray-950 dark:text-white leading-tight mb-8 tracking-tighter">${blog.title}</h1>
+                    <div class="flex items-center gap-6 text-sm text-gray-500 dark:text-gray-400">
+                        <span class="flex items-center gap-2"><span class="material-icons-outlined text-base">calendar_today</span> ${blog.date}</span>
+                        <span class="flex items-center gap-2"><span class="material-icons-outlined text-base">schedule</span> ${blog.readTime}</span>
+                        <span class="flex items-center gap-2 font-bold text-primary italic">"Make Life Better"</span>
+                    </div>
+                </div>
+                
+                <div class="relative rounded-[3rem] overflow-hidden mb-16 shadow-2xl" data-aos="fade-up">
+                    <img src="${blog.image}" alt="${blog.title}" class="w-full h-[300px] md:h-[500px] object-cover" />
+                </div>
+
+                <div data-aos="fade-up" data-aos-delay="200">
+                    ${blog.content}
+                </div>
+            `;
+        } else {
+            window.location.href = 'blog.html';
+        }
+    </script>
+</body>
+</html>
